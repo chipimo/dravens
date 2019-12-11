@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { KeyboardAvoidingView, LayoutAnimation, Platform, StyleSheet, UIManager } from 'react-native'
 import { Image, View } from 'react-native-animatable'
 
-import imgLogo from '../../assets/logo.png'
+import imgLogo from '../../assets/welcome.png'
 import metrics from '../../config/metrics'
 
 import Opening from './Opening'
@@ -83,7 +83,7 @@ export default class AuthScreen extends Component {
   }
 
   render () {
-    const { isLoggedIn, isLoading, signup, login } = this.props
+    const { isLoggedIn, isLoading, signup, login, nav } = this.props
     const { visibleForm } = this.state
     // The following style is responsible of the "bounce-up from bottom" animation of the form
     const formStyle = (!visibleForm) ? { height: 0 } : { marginTop: 40 }
@@ -122,6 +122,7 @@ export default class AuthScreen extends Component {
               onSignupLinkPress={() => this._setVisibleForm('SIGNUP')}
               onLoginPress={login}
               isLoading={isLoading}
+              nav={nav}
             />
           )}
         </KeyboardAvoidingView>

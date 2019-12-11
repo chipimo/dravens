@@ -1,10 +1,13 @@
 import React from "react";
 import { View, Text } from "react-native";
+import { Card } from 'react-native-material-ui';
 
 const HomeScreen = () => {
   return (
     <View>
-      <Text></Text>
+      <Card>
+        <Text>Hello world!</Text>
+      </Card>
     </View>
   );
 };

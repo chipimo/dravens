@@ -66,13 +66,13 @@ export default class LoginForm extends Component {
         <View style={styles.footer}>
           <View ref={(ref) => this.buttonRef = ref} animation={'bounceIn'} duration={600} delay={400}>
             <CustomButton
-              onPress={() => onLoginPress(email, password)}
-              isEnabled={isValid}
+              onPress={() => this.props.nav.navigate('Main')}
+              isEnabled
               isLoading={isLoading}
               buttonStyle={styles.loginButton}
               textStyle={styles.loginButtonText}
               text={'Log In'}
-            />
+            /> 
           </View>
           <Text
             ref={(ref) => this.linkRef = ref}

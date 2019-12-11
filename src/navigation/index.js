@@ -15,12 +15,7 @@ import BookingScreen from "../screens/Booking";
 import UserProfile from "../screens/UserProfile";
 import CustomerCare from "../screens/CustomerCare";
 import AuthMonitor from "../screens/auth/AuthMonitor";
-
-const AuthStack = createStackNavigator({
-  AuthMonitor: AuthMonitor,
-  Login: LoginScreen,
-  Signup: SignupScreen
-});
+import ToolBar from "../components/ToolBar";
 
 /////Tab navigation
 const HomeStack = createStackNavigator({
@@ -33,7 +28,7 @@ HomeStack.navigationOptions = {
     <TabBarIcon focused={focused} color={tintColor} name={"ios-home"} />
   ),
   tabBarOptions: {
-    activeTintColor: "#7f9293"
+    activeTintColor: "#503088"
   }
 };
 
@@ -50,7 +45,7 @@ MonitorStack.navigationOptions = {
     />
   ),
   tabBarOptions: {
-    activeTintColor: "#7f9293"
+    activeTintColor: "#503088"
   }
 };
 
@@ -65,7 +60,10 @@ Booking.navigationOptions = {
       focused={focused}
       name={Platform.OS === "ios" ? "ios-calendar" : "md-calendar"}
     />
-  )
+  ),
+  tabBarOptions: {
+    activeTintColor: "#503088"
+  }
 };
 
 const User = createStackNavigator({
@@ -79,7 +77,10 @@ User.navigationOptions = {
       focused={focused}
       name={Platform.OS === "ios" ? "ios-person" : "md-person"}
     />
-  )
+  ),
+  tabBarOptions: {
+    activeTintColor: "#503088"
+  }
 };
 
 const Customer = createStackNavigator({
@@ -93,7 +94,10 @@ Customer.navigationOptions = {
       focused={focused}
       name={Platform.OS === "ios" ? "ios-text" : "md-text"}
     />
-  )
+  ),
+  tabBarOptions: {
+    activeTintColor: "#503088"
+  }
 };
 
 const TabBarComponent = props => <BottomTabBar {...props} />;
@@ -122,7 +126,7 @@ const Stacks = createStackNavigator(
   {
     /* Other configuration remains unchanged */
     defaultNavigationOptions: {
-      header: null
+      header: props => <ToolBar {...props} />
     }
   }
 );
@@ -130,11 +134,11 @@ const Stacks = createStackNavigator(
 ////SCREEN SWICHER NAVIGATION//////
 const DravensApp = createAnimatedSwitchNavigator(
   {
-    Auth: AuthStack,
+    Auth: AuthMonitor,
     Main: Stacks
   },
   {
-    initialRouteName: "Auth",
+    initialRouteName: "Main",
     transition: (
       <Transition.Together>
         <Transition.Out

@@ -4,7 +4,7 @@ import Animation from "lottie-react-native";
 import anim from "../../assets/lottie/pulse.json";
 import AuthScreen from "../../containers/AuthScreen";
 
-const AuthMonitor = () => {
+const AuthMonitor = (props) => {
   const [isLoggedIn, setisLoggedIn] = React.useState(false);
   const [isLoading, setisLoading] = React.useState(false);
   const [isAppReady, setisAppReady] = React.useState(false);
@@ -27,6 +27,7 @@ const AuthMonitor = () => {
   return (
     <View style={{ flex: 1 }}>
       <AuthScreen
+        nav={props.navigation}
         login={_simulateLogin}
         signup={_simulateSignup}
         isLoggedIn={isLoggedIn}
