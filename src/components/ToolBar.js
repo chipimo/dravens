@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, StatusBar,Dimensions, Platform } from "react-native";
+import { View, Text, StatusBar, Dimensions, Platform } from "react-native";
+import { Toolbar } from "react-native-material-ui";
 
 const X_WIDTH = 375;
 const X_HEIGHT = 812;
@@ -24,8 +25,18 @@ export const StatusBarHeight = Platform.select({
 const ToolBar = () => {
   return (
     <View>
-      <StatusBar backgroundColor="#6B52AE" barStyle="light-content" />
-      <View style={{ height: StatusBarHeight }}></View>
+      <StatusBar barStyle="light-content" />
+      <View style={{ height: StatusBarHeight, backgroundColor: "#503088" }} />
+      <View
+        style={{
+          height: 25,
+          padding: 2,
+          paddingLeft: 9, 
+          backgroundColor: "#6B52AE"
+        }}
+      >
+        <Text style={{ color: "#DFDFDF" }}>Dravens HelthCare</Text>
+      </View>
     </View>
   );
 };
