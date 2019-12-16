@@ -4,7 +4,8 @@ import {
   View,
   FlatList,
   ImageBackground,
-  StyleSheet
+  StyleSheet,
+  TouchableOpacity
 } from "react-native";
 import { Text } from "react-native-elements";
 import {
@@ -38,9 +39,29 @@ const DATA = [
   },
   {
     id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-    title: "Second Item"
+    title: "Second Item",
+    type: "Events",
+    data: [
+      {
+        id: "58694a0f-3da1-471f-bd96-1455719d0",
+        title: "Third Item"
+      },
+      {
+        id: "58694a0f-3da1-471f-bd96-14557561e29d0",
+        title: "Third Item"
+      },
+      {
+        id: "58694a0f-3da1-471f-bd96-145571e35fv9d0",
+        title: "Third Item"
+      },
+      {
+        id: "58694a0f-3da1-471f-bd96-145571e29dsafrd0",
+        title: "Third Item"
+      }
+    ]
   },
   {
+    type: "feeds",
     id: "58694a0f-3da1-471f-bd96-145571e29d72",
     title: "Third Item"
   }
@@ -60,14 +81,44 @@ const HomeScreen = () => {
     sethour(hour);
   };
 
-  RenderItems = props => {
+  _renderItem = ({ data }) => {
+    return (
+      <TouchableOpacity
+        style={{
+          width: 150,
+          marginLeft: 10,
+          marginRight: 10,
+          height: "100%",
+
+          overflow: "hidden"
+        }}
+      >
+        <View style={{ height: 100, width: "100%" }}>
+          <ImageBackground
+            source={{
+              uri:
+                "https://res.cloudinary.com/chawanangwa/image/upload/v1576282284/66342585_2387694371468181_6021474935594024960_n_nrjbqe.jpg"
+            }}
+            style={{
+              width: "100%",
+              height: "100%",
+              borderRadius: 5,overflow: 'hidden',
+            }}
+          ></ImageBackground>
+        </View>
+        <Text numberOfLines={2} style={{ color: "#515151" }}>Preventative care visits, including health screenings for cholesterol levels, colon cancer, heart problems and more, qualify for Medicare coverage. Seniors also need to get vaccinations that can help prevent influenza and pneumonia</Text>
+      </TouchableOpacity>
+    );
+  };
+
+  RenderItems = ({ data }) => {
     return (
       <View>
-        {props.type === "banner" ? (
+        {data.type === "banner" ? (
           <View style={{}}>
             <CardFour
               image={{
-                uri: props.image
+                uri: data.image
               }}
               date={moment(new Date()).format("MMMM Do YYYY")}
               off={
@@ -77,40 +128,68 @@ const HomeScreen = () => {
                   ? `Good afternoon ${username} welcome back`
                   : `Good evening ${username} welcome back`
               }
-              offText={props.offText}
+              offText={data.offText}
             />
           </View>
         ) : (
           <View>
-            <Text>News</Text>
-            <View>
-              <CardSix
-                title={"Focus on prevention."}
-                subTitle={
-                  "Preventative care visits, including health screenings for cholesterol levels, colon cancer, heart problems and more, qualify for Medicare coverage. Seniors also need to get vaccinations that can help prevent influenza and pneumonia."
-                }
-                profile={{
-                  uri:
-                    "https://lemag.nikonclub.fr/wp-content/uploads/2016/11/Photo-selection-pour-Nikon-France-Mattia-Bonavida-2016-6.jpg"
-                }}
-                image={{
-                  uri:
-                    "https://res.cloudinary.com/chawanangwa/image/upload/v1576282257/62515058_3145476662137095_4364052734014390272_n_uzxn15.jpg"
-                }}
-                icon1={"star"}
-                iconColor1={"#fff"}
-                iconBackground1={"red"}
-                onClicked1={() => {
-                  alert("Hello!");
-                }}
-                icon2={"rocket"}
-                iconColor2={"#fff"}
-                iconBackground2={"purple"}
-                onClicked2={() => {
-                  alert("Hello!");
-                }}
-              />
-            </View>
+            {data.type === "Events" ? (
+              <View style={{ height:200, padding: 5 }}>
+                <View style={{ marginBottom: 5, marginLeft: 10 }}>
+                  <Text h4 style={{ color: "#AAAAAA" }}>
+                    Events{" "}
+                  </Text>
+                  <Text style={{ color: "#AAAAAA" }}>
+                    Scroll horizontal for more events{" "}
+                  </Text>
+                </View>
+                <FlatList
+                  horizontal={true}
+                  data={data.data}
+                  keyExtractor={item => item.id}
+                  renderItem={_renderItem}
+                />
+              </View>
+            ) : (
+              <View style={{marginTop:10}}>
+                <View style={{ marginBottom: 5, marginLeft: 10 }}>
+                  <Text h4 style={{ color: "#AAAAAA" }}>
+                    Events{" "}
+                  </Text>
+                  <Text style={{ color: "#AAAAAA" }}>
+                    Scroll horizontal for more events{" "}
+                  </Text>
+                </View>
+                <View>
+                  <CardSix
+                    title={"Focus on prevention."}
+                    subTitle={
+                      "Preventative care visits, including health screenings for cholesterol levels, colon cancer, heart problems and more, qualify for Medicare coverage. Seniors also need to get vaccinations that can help prevent influenza and pneumonia."
+                    }
+                    profile={{
+                      uri:
+                        "https://lemag.nikonclub.fr/wp-content/uploads/2016/11/Photo-selection-pour-Nikon-France-Mattia-Bonavida-2016-6.jpg"
+                    }}
+                    image={{
+                      uri:
+                        "https://res.cloudinary.com/chawanangwa/image/upload/v1576282257/62515058_3145476662137095_4364052734014390272_n_uzxn15.jpg"
+                    }}
+                    icon1={"star"}
+                    iconColor1={"#fff"}
+                    iconBackground1={"red"}
+                    onClicked1={() => {
+                      alert("Hello!");
+                    }}
+                    icon2={"rocket"}
+                    iconColor2={"#fff"}
+                    iconBackground2={"purple"}
+                    onClicked2={() => {
+                      alert("Hello!");
+                    }}
+                  />
+                </View>
+              </View>
+            )}
           </View>
         )}
       </View>
@@ -121,7 +200,7 @@ const HomeScreen = () => {
     <SafeAreaView style={styles.container}>
       <FlatList
         data={DATA}
-        renderItem={({ item }) => <RenderItems title={item.title} />}
+        renderItem={({ item }) => <RenderItems data={item} />}
         keyExtractor={item => item.id}
       />
     </SafeAreaView>
