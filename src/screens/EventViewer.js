@@ -16,6 +16,9 @@ import HeaderImageScrollView, {
   TriggeringView
 } from "react-native-image-header-scroll-view";
 import { IconToggle } from "react-native-material-ui";
+import GestureRecognizer, {
+  swipeDirections
+} from "react-native-swipe-gestures";
 
 const MIN_HEIGHT = 45;
 const MAX_HEIGHT = 200;
@@ -121,7 +124,7 @@ const EventViewer = props => {
             {"date"})
           </Text>
         </TriggeringView>
-        <View style={styles.section}>
+        <View style={styles.section}> 
           <Text style={styles.sectionTitle}>Overview</Text>
           <Text style={styles.sectionContent}>
             {props.EventCard.data.summary}
@@ -212,7 +215,8 @@ const styles = StyleSheet.create({
 });
 
 EventViewer.navigationOptions = {
-  header: null
+  header: null,
+  gesturesEnabled: false
 };
 
 function mapStateToProps(state) {
