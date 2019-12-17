@@ -120,8 +120,7 @@ const EventViewer = props => {
           onDisplay={() => textInput.fadeOut(100)}
         >
           <Text style={styles.title}>
-            <Text style={styles.name}>{props.EventCard.data.title}</Text>, (
-            {"date"})
+            <Text style={styles.name}>{props.EventCard.data.subTitle}</Text>
           </Text>
         </TriggeringView>
         <View style={styles.section}> 

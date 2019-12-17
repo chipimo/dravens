@@ -35,7 +35,7 @@ const DATA = [
   {
     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
     offText:
-      "Be physically active. Being physically active unlocks a number of health benefits in your body",
+      "As a client who use our services we want to deliver a service that for exceeds your expectation at all times",
     type: "banner",
     image:
       "https://res.cloudinary.com/chawanangwa/image/upload/v1576282269/66076406_667789507057425_3243528614397870080_n_ztppd4.jpg"
@@ -47,19 +47,43 @@ const DATA = [
     data: [
       {
         id: "58694a0f-3da1-471f-bd96-1455719d0",
-        title: "Third Item"
+        subTitle: "What is Safeguarding Training & Why is it so Important?",
+        summary:
+          "Preventative care visits, including health screenings for cholesterol" +
+          "levels, colon cancer, heart problems and more, qualify for Medicare" +
+          "coverage. Seniors also need to get vaccinations that can help prevent" +
+          "influenza and pneumonia",
+        author: "Dravens",
+        title: "Safeguarding vulnerable adults",
+        img:
+          "https://res.cloudinary.com/chawanangwa/image/upload/v1576282284/66342585_2387694371468181_6021474935594024960_n_nrjbqe.jpg"
       },
       {
         id: "58694a0f-3da1-471f-bd96-14557561e29d0",
-        title: "Third Item"
+        summary: "",
+        subTitle: "What is Safeguarding Training & Why is it so Important?",
+        author: "Dravens",
+        title: "Care Certificate",
+        img:
+        "https://res.cloudinary.com/chawanangwa/image/upload/v1576567350/66258261_432012277640677_254627926417342464_n_au2gp5.jpg"
       },
       {
         id: "58694a0f-3da1-471f-bd96-145571e35fv9d0",
-        title: "Third Item"
+        subTitle: "What is Safeguarding Training & Why is it so Important?",
+        summary: "",
+        author: "Dravens",
+        title: "Challenging behavior",
+        img:
+        "https://res.cloudinary.com/chawanangwa/image/upload/v1576567474/66127061_957336111332158_1926395640888164352_n_qsxwkx.jpg"
       },
       {
         id: "58694a0f-3da1-471f-bd96-145571e29dsafrd0",
-        title: "Third Item"
+        subTitle: "What is Safeguarding Training & Why is it so Important?",
+        summary: "",
+        author: "Dravens",
+        title: "Infection control",
+        img:
+          "https://res.cloudinary.com/chawanangwa/image/upload/v1576567547/66373088_370109557023908_8588405072541515776_n_jvpb4n.jpg"
       }
     ]
   },
@@ -87,28 +111,23 @@ const HomeScreen = props => {
     sethour(hour);
   };
 
-  _renderItem = ({ data }) => {
+  RenderItemInner = ({ data }) => {
     return (
       <TouchableOpacity
         onPress={() => {
           props.dispatchEvent({
             type: "EVENTITEM",
             payload: {
-              img:
-                "https://res.cloudinary.com/chawanangwa/image/upload/v1576282284/66342585_2387694371468181_6021474935594024960_n_nrjbqe.jpg",
-              title: "Health Week",
-              author: "Dravens",
+              img: data.img,
+              title: data.title,
+              author: data.author,
               price: 0,
               reviews: {
                 num: null,
                 comments: []
               },
               rating: 0,
-              summary:
-                "Preventative care visits, including health screenings for cholesterol" +
-                "levels, colon cancer, heart problems and more, qualify for Medicare" +
-                "coverage. Seniors also need to get vaccinations that can help prevent" +
-                "influenza and pneumonia",
+              summary: data.summary,
               date: new Date(),
               time: "02:20"
             }
@@ -125,8 +144,7 @@ const HomeScreen = props => {
         <View style={{ height: 100, width: "100%" }}>
           <ImageBackground
             source={{
-              uri:
-                "https://res.cloudinary.com/chawanangwa/image/upload/v1576282284/66342585_2387694371468181_6021474935594024960_n_nrjbqe.jpg"
+              uri: data.img
             }}
             style={{
               width: "100%",
@@ -137,10 +155,7 @@ const HomeScreen = props => {
           ></ImageBackground>
         </View>
         <Text numberOfLines={2} style={{ color: "#515151" }}>
-          Preventative care visits, including health screenings for cholesterol
-          levels, colon cancer, heart problems and more, qualify for Medicare
-          coverage. Seniors also need to get vaccinations that can help prevent
-          influenza and pneumonia
+          {data.title}
         </Text>
       </TouchableOpacity>
     );
@@ -182,7 +197,7 @@ const HomeScreen = props => {
                     >
                       <View style={{ flexDirection: "row" }}>
                         <Text h4 style={{ color: "#AAAAAA" }}>
-                          Events{" "}
+                          Training{" "}
                         </Text>
                         <View style={{ marginLeft: 5, marginTop: 5 }}>
                           <Ionicons
@@ -193,7 +208,7 @@ const HomeScreen = props => {
                         </View>
                       </View>
                       <Text style={{ color: "#AAAAAA" }}>
-                        Show all dravens events{" "}
+                        Our Training is specially delivered In House{" "}
                       </Text>
                     </TouchableOpacity>
                   </View>
@@ -202,7 +217,7 @@ const HomeScreen = props => {
                   horizontal={true}
                   data={data.data}
                   keyExtractor={item => item.id}
-                  renderItem={_renderItem}
+                  renderItem={({ item }) => <RenderItemInner data={item} />}
                 />
               </View>
             ) : (
