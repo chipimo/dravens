@@ -16,12 +16,13 @@ const Events = () => {
   RenderItem = ({ data }) => {
     return (
       <CardEcomFour
-        title={"Porsche Rubber"}
-        subTitle={
-          "Zermatt is famed as a mounering and ski destome banmdo liono"
-        }
+        title={"Safeguarding vulnerable adults"}
+        subTitle={"What is safeguarding training & Why is it so important"}
         price={""}
-        image={{uri:'https://res.cloudinary.com/chawanangwa/image/upload/v1576282284/66342585_2387694371468181_6021474935594024960_n_nrjbqe.jpg'}}
+        image={{
+          uri:
+            "https://res.cloudinary.com/chawanangwa/image/upload/v1576282284/66342585_2387694371468181_6021474935594024960_n_nrjbqe.jpg"
+        }}
         buttonText={"VIEW DETAILS"}
         buttonColor={"#4383FF"}
         onClickButton={() => alert("Has clicked")}
