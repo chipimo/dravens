@@ -16,10 +16,16 @@ import UserProfile from "../screens/UserProfile";
 import CustomerCare from "../screens/CustomerCare";
 import AuthMonitor from "../screens/auth/AuthMonitor";
 import ToolBar from "../components/ToolBar";
+import Events from "../screens/Events";
+import FeedViewer from "../screens/FeedViewer";
+import EventViewer from "../screens/EventViewer";
 
 /////Tab navigation
 const HomeStack = createStackNavigator({
-  Home: HomeScreen
+  Home: HomeScreen,
+  Events: Events,
+  EventViewer: EventViewer,
+  FeedViewer: FeedViewer
 });
 
 HomeStack.navigationOptions = {
@@ -138,7 +144,7 @@ const DravensApp = createAnimatedSwitchNavigator(
     Main: Stacks
   },
   {
-    initialRouteName: "Main",
+    initialRouteName: "Auth",
     transition: (
       <Transition.Together>
         <Transition.Out

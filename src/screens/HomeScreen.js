@@ -27,6 +27,9 @@ import {
   CardEcomFour
 } from "react-native-card-ui";
 import moment from "moment";
+import { Ionicons } from "@expo/vector-icons";
+import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
 const DATA = [
   {
@@ -67,13 +70,16 @@ const DATA = [
   }
 ];
 
-const HomeScreen = () => {
+const HomeScreen = props => {
   const [hour, sethour] = React.useState(null);
   const [username, setusername] = React.useState("Melvin");
+  const value = useSelector(store => store.EventCard.isLoaded);
 
   useEffect(() => {
     this.getHour();
-  }, []);
+    if (value) props.navigation.navigate("EventViewer");
+    return () => {};
+  }, [value]);
 
   getHour = () => {
     const date = new Date();
@@ -84,12 +90,35 @@ const HomeScreen = () => {
   _renderItem = ({ data }) => {
     return (
       <TouchableOpacity
+        onPress={() => {
+          props.dispatchEvent({
+            type: "EVENTITEM",
+            payload: {
+              img:
+                "https://res.cloudinary.com/chawanangwa/image/upload/v1576282284/66342585_2387694371468181_6021474935594024960_n_nrjbqe.jpg",
+              title: "Health Week",
+              author: "Dravens",
+              price: 0,
+              reviews: {
+                num: null,
+                comments: []
+              },
+              rating: 0,
+              summary:
+                "Preventative care visits, including health screenings for cholesterol" +
+                "levels, colon cancer, heart problems and more, qualify for Medicare" +
+                "coverage. Seniors also need to get vaccinations that can help prevent" +
+                "influenza and pneumonia",
+              date: new Date(),
+              time: "02:20"
+            }
+          });
+        }}
         style={{
           width: 150,
           marginLeft: 10,
           marginRight: 10,
           height: "100%",
-
           overflow: "hidden"
         }}
       >
@@ -102,11 +131,17 @@ const HomeScreen = () => {
             style={{
               width: "100%",
               height: "100%",
-              borderRadius: 5,overflow: 'hidden',
+              borderRadius: 5,
+              overflow: "hidden"
             }}
           ></ImageBackground>
         </View>
-        <Text numberOfLines={2} style={{ color: "#515151" }}>Preventative care visits, including health screenings for cholesterol levels, colon cancer, heart problems and more, qualify for Medicare coverage. Seniors also need to get vaccinations that can help prevent influenza and pneumonia</Text>
+        <Text numberOfLines={2} style={{ color: "#515151" }}>
+          Preventative care visits, including health screenings for cholesterol
+          levels, colon cancer, heart problems and more, qualify for Medicare
+          coverage. Seniors also need to get vaccinations that can help prevent
+          influenza and pneumonia
+        </Text>
       </TouchableOpacity>
     );
   };
@@ -134,14 +169,34 @@ const HomeScreen = () => {
         ) : (
           <View>
             {data.type === "Events" ? (
-              <View style={{ height:200, padding: 5 }}>
+              <View style={{ height: 210, padding: 5 }}>
                 <View style={{ marginBottom: 5, marginLeft: 10 }}>
-                  <Text h4 style={{ color: "#AAAAAA" }}>
-                    Events{" "}
-                  </Text>
-                  <Text style={{ color: "#AAAAAA" }}>
-                    Scroll horizontal for more events{" "}
-                  </Text>
+                  <View>
+                    <TouchableOpacity
+                      onPress={() => props.navigation.navigate("Events")}
+                      style={{
+                        marginLeft: 2,
+                        marginTop: 7,
+                        marginBottom: 4
+                      }}
+                    >
+                      <View style={{ flexDirection: "row" }}>
+                        <Text h4 style={{ color: "#AAAAAA" }}>
+                          Events{" "}
+                        </Text>
+                        <View style={{ marginLeft: 5, marginTop: 5 }}>
+                          <Ionicons
+                            name="ios-arrow-dropright"
+                            size={23}
+                            color="#AAAAAA"
+                          />
+                        </View>
+                      </View>
+                      <Text style={{ color: "#AAAAAA" }}>
+                        Show all dravens events{" "}
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
                 </View>
                 <FlatList
                   horizontal={true}
@@ -151,7 +206,7 @@ const HomeScreen = () => {
                 />
               </View>
             ) : (
-              <View style={{marginTop:10}}>
+              <View style={{ marginTop: 10 }}>
                 <View style={{ marginBottom: 5, marginLeft: 10 }}>
                   <Text h4 style={{ color: "#AAAAAA" }}>
                     Events{" "}
@@ -227,4 +282,18 @@ const styles = StyleSheet.create({
 HomeScreen.navigationOptions = {
   header: null
 };
-export default HomeScreen;
+
+function mapStateToProps(state) {
+  return {
+    EventCard: state.EventCard,
+    User: state.User
+  };
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatchEvent: data => dispatch(data)
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
