@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { Image, View } from "react-native-animatable";
 
-import imgLogo from "../../assets/welcome.png";
+import imgLogo from "../../assets/welcome-logo.png";
 import metrics from "../../config/metrics";
 
 import Opening from "./Opening";
