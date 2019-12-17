@@ -101,7 +101,7 @@ export default class AuthScreen extends Component {
         <ImageBackground
           source={{
             uri:
-              "https://res.cloudinary.com/chawanangwa/image/upload/v1576559516/66639018_654296765039057_8177279872276627456_n_iweewt.png"
+              "https://res.cloudinary.com/chawanangwa/image/upload/v1576561508/66639018_654296765039057_8177279872276627456_n_eucpzg.png"
           }}
           style={styles.container}
         >
@@ -152,17 +152,13 @@ export default class AuthScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: "100%",
-    height: "100%",
-    flexDirection: "column",
-    paddingTop: 24,
     backgroundColor: "#5E1E7C",
     resizeMode: 'cover', // or 'stretch'
   },
   logoImg: {
     flex: 1,
     height: null,
-    marginTop: 150,
+    marginTop: 220,
     width: IMAGE_WIDTH,
     alignSelf: "center",
     resizeMode: "contain",
