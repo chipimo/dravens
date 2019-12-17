@@ -121,15 +121,12 @@ const HomeScreen = props => {
               img: data.img,
               title: data.title,
               author: data.author,
-              price: 0,
+              subTitle:data.subTitle,
               reviews: {
                 num: null,
                 comments: []
               },
-              rating: 0,
               summary: data.summary,
-              date: new Date(),
-              time: "02:20"
             }
           });
         }}

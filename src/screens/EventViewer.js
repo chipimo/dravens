@@ -63,7 +63,7 @@ const EventViewer = props => {
         )}
         renderFixedForeground={() => (
           <Animatable.View
-            style={styles.navTitleView}
+            style={[styles.navTitleView, { paddingRight: 5 }]}
             ref={navTitleView => {
               textInput = navTitleView;
             }}
@@ -78,8 +78,10 @@ const EventViewer = props => {
               color={"#DFDEE0"}
               name="keyboard-arrow-left"
             />
-            <Text style={styles.navTitle}>{props.EventCard.data.title}</Text>
-            <Text style={styles.navTitle}>{"Jun 2 2020"}</Text>
+
+            <Text numberOfLines={1} style={styles.navTitle}>
+              {props.EventCard.data.title}
+            </Text>
           </Animatable.View>
         )}
         renderForeground={() => (
@@ -97,9 +99,6 @@ const EventViewer = props => {
                 color={"#FFFFFF"}
                 name="keyboard-arrow-left"
               />
-              <Text style={{ color: "#B7B7B8", marginTop: 8, marginRight: 5 }}>
-                Jun 2 2020
-              </Text>
             </View>
             <View style={styles.titleContainer}>
               <Text style={styles.imageTitle}>
@@ -123,17 +122,13 @@ const EventViewer = props => {
             <Text style={styles.name}>{props.EventCard.data.subTitle}</Text>
           </Text>
         </TriggeringView>
-        <View style={styles.section}> 
+        <View style={styles.section}>
           <Text style={styles.sectionTitle}>Overview</Text>
           <Text style={styles.sectionContent}>
             {props.EventCard.data.summary}
           </Text>
         </View>
-        <View style={styles.sectionLarge}>
-          <Text style={styles.sectionContent}>
-            {props.EventCard.data.summary}
-          </Text>
-        </View>
+       
       </HeaderImageScrollView>
     </View>
   );
@@ -191,7 +186,8 @@ const styles = StyleSheet.create({
   imageTitle: {
     color: "white",
     backgroundColor: "transparent",
-    fontSize: 24
+    fontSize: 24,
+    textAlign: "center"
   },
   navTitleView: {
     height: MIN_HEIGHT,
@@ -206,7 +202,8 @@ const styles = StyleSheet.create({
     color: "#DFDEE0",
     fontSize: 18,
     backgroundColor: "transparent",
-    paddingTop: 10
+    paddingTop: 10,
+    textAlign: "center"
   },
   sectionLarge: {
     height: 600
