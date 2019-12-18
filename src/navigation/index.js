@@ -144,7 +144,7 @@ const DravensApp = createAnimatedSwitchNavigator(
     Main: Stacks
   },
   {
-    initialRouteName: "Auth",
+    initialRouteName: "Main",
     transition: (
       <Transition.Together>
         <Transition.Out

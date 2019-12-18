@@ -52,7 +52,9 @@ const DATA = [
           "Preventative care visits, including health screenings for cholesterol" +
           "levels, colon cancer, heart problems and more, qualify for Medicare" +
           "coverage. Seniors also need to get vaccinations that can help prevent" +
-          "influenza and pneumonia",
+          "influenza and pneumonia  " +
+          "  "+
+          "A vulnerable adult is defined as a person who, for any reason, may be unable to take care of themselves or protect themselves against significant harm or exploitation. Safeguarding vulnerable adults involves reducing or preventing the risk of significant harm from neglect or abuse, while also supporting people to maintain control of their own lives.",
         author: "Dravens",
         title: "Safeguarding vulnerable adults",
         img:
@@ -65,7 +67,7 @@ const DATA = [
         author: "Dravens",
         title: "Care Certificate",
         img:
-        "https://res.cloudinary.com/chawanangwa/image/upload/v1576567350/66258261_432012277640677_254627926417342464_n_au2gp5.jpg"
+          "https://res.cloudinary.com/chawanangwa/image/upload/v1576567350/66258261_432012277640677_254627926417342464_n_au2gp5.jpg"
       },
       {
         id: "58694a0f-3da1-471f-bd96-145571e35fv9d0",
@@ -74,7 +76,7 @@ const DATA = [
         author: "Dravens",
         title: "Challenging behavior",
         img:
-        "https://res.cloudinary.com/chawanangwa/image/upload/v1576567474/66127061_957336111332158_1926395640888164352_n_qsxwkx.jpg"
+          "https://res.cloudinary.com/chawanangwa/image/upload/v1576567474/66127061_957336111332158_1926395640888164352_n_qsxwkx.jpg"
       },
       {
         id: "58694a0f-3da1-471f-bd96-145571e29dsafrd0",
@@ -121,12 +123,12 @@ const HomeScreen = props => {
               img: data.img,
               title: data.title,
               author: data.author,
-              subTitle:data.subTitle,
+              subTitle: data.subTitle,
               reviews: {
                 num: null,
                 comments: []
               },
-              summary: data.summary,
+              summary: data.summary
             }
           });
         }}
@@ -221,10 +223,10 @@ const HomeScreen = props => {
               <View style={{ marginTop: 10 }}>
                 <View style={{ marginBottom: 5, marginLeft: 10 }}>
                   <Text h4 style={{ color: "#AAAAAA" }}>
-                    Events{" "}
+                    News Feeds{" "}
                   </Text>
                   <Text style={{ color: "#AAAAAA" }}>
-                    Scroll horizontal for more events{" "}
+                    Get updates and news feeds{" "}
                   </Text>
                 </View>
                 <View>

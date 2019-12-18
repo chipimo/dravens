@@ -2,17 +2,18 @@ import React from "react";
 import { View, Text, FlatList, SafeAreaView, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import { CardEcomFour } from "react-native-card-ui";
+import { IconToggle } from "react-native-material-ui";
 
 const DATA = [
   {
     img: "",
     title: "",
     icon: "",
-    kay: "hdf236eu"
+    id: "hdf236eu"
   }
 ];
 
-const Events = () => {
+const Events = props => {
   RenderItem = ({ data }) => {
     return (
       <CardEcomFour
@@ -32,6 +33,15 @@ const Events = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <View style={{ height: 25, width: "100%", backgroundColor: "#6B52AE" }}>
+        <IconToggle
+          onPress={() => {
+            props.navigation.goBack();
+          }}
+          color={"#DFDEE0"}
+          name="keyboard-arrow-left"
+        />
+      </View>
       <FlatList
         data={DATA}
         keyExtractor={item => item.id}

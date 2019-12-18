@@ -128,7 +128,6 @@ const EventViewer = props => {
             {props.EventCard.data.summary}
           </Text>
         </View>
-       
       </HeaderImageScrollView>
     </View>
   );
@@ -149,6 +148,7 @@ const styles = StyleSheet.create({
   },
   section: {
     padding: 20,
+    marginBottom: 90,
     borderBottomWidth: 1,
     borderBottomColor: "#cccccc",
     backgroundColor: "white"
