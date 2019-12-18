@@ -19,13 +19,15 @@ import ToolBar from "../components/ToolBar";
 import Events from "../screens/Events";
 import FeedViewer from "../screens/FeedViewer";
 import EventViewer from "../screens/EventViewer";
+import ServicesView from "../screens/ServicesView";
 
 /////Tab navigation
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
   Events: Events,
   EventViewer: EventViewer,
-  FeedViewer: FeedViewer
+  ServicesView: ServicesView,
+  FeedViewer: FeedViewer,
 });
 
 HomeStack.navigationOptions = {

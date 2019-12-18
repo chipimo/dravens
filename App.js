@@ -13,8 +13,8 @@ const persistor = persistStore(configureStore);
 export default function App() {
   const [isLoaded, setIsLoaded] = React.useState(false);
 
-  loadAssets = async () => {
-    await Font.loadAsync({
+  const fetchFonts = () => {
+    return Font.loadAsync({
       fontawesome: require("./src/assets/fonts/fontawesome.ttf"),
       icomoon: require("./src/assets/fonts/icomoon.ttf"),
       "Righteous-Regular": require("./src/assets/fonts/Righteous-Regular.ttf"),
@@ -23,30 +23,23 @@ export default function App() {
       "Roboto-Regular": require("./src/assets/fonts/Roboto-Regular.ttf"),
       "Roboto-Light": require("./src/assets/fonts/Roboto-Light.ttf")
     });
-
-    setIsLoaded(true);
   };
 
-  renderLoading = () => <AppLoading />;
-
-  RenderApp = () => {
-    return <AppContainer />;
-  };
+  if (!isLoaded) {
+    return (
+      <AppLoading
+        startAsync={fetchFonts}
+        onFinish={() => setIsLoaded(true)}
+        onError={() => console.warn}
+      />
+    );
+  }
 
   return (
     <Provider store={configureStore}>
       <PersistGate persistor={persistor}>
-        {isLoaded ? <RenderApp /> : renderLoading()}
+        <AppContainer />
       </PersistGate>
     </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  }
-});

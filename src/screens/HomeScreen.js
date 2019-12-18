@@ -5,7 +5,8 @@ import {
   FlatList,
   ImageBackground,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
+  Image
 } from "react-native";
 import { Text } from "react-native-elements";
 import {
@@ -53,7 +54,7 @@ const DATA = [
           "levels, colon cancer, heart problems and more, qualify for Medicare" +
           "coverage. Seniors also need to get vaccinations that can help prevent" +
           "influenza and pneumonia  " +
-          "  "+
+          "  " +
           "A vulnerable adult is defined as a person who, for any reason, may be unable to take care of themselves or protect themselves against significant harm or exploitation. Safeguarding vulnerable adults involves reducing or preventing the risk of significant harm from neglect or abuse, while also supporting people to maintain control of their own lives.",
         author: "Dravens",
         title: "Safeguarding vulnerable adults",
@@ -90,9 +91,49 @@ const DATA = [
     ]
   },
   {
+    type: "sevices",
+    id: "58694a0f-3da1-471f-bd96-1571e29d72",
+    title: "HealthCare Services",
+    data: [
+      {
+        id: "58694a0f-3da1-471f-bd96-145571e242",
+        title: "MEAL PREPARATION",
+        summary:
+          "We are a specialist care service providing" +
+          "the home care services and support to" +
+          "individuals living in the comfort of their" +
+          "own homes",
+        contant: "",
+        icon: require("../assets/imageIcons/icons8-vegan-food-64.png")
+      },
+      {
+        id: "58694a0f-3da1-471f-bd96-145571e242",
+        title: "MEDICATION SUPPORT",
+        summary:
+          "We are a specialist care service providing" +
+          "the home care services and support to" +
+          "individuals living in the comfort of their" +
+          "own homes",
+        contant: "",
+        icon: require("../assets/imageIcons/icons8-pills-64.png")
+      },
+      {
+        id: "58694a0f-3da1-471f-bd96-145571e242",
+        title: "HOMECARE",
+        summary:
+          "We are a specialist care service providing" +
+          "the home care services and support to" +
+          "individuals living in the comfort of their" +
+          "own homes",
+        contant: "",
+        icon: require("../assets/imageIcons/icons8-hospital-bed-80.png")
+      }
+    ]
+  },
+  {
     type: "feeds",
     id: "58694a0f-3da1-471f-bd96-145571e29d72",
-    title: "Third Item"
+    title: "News Feeds"
   }
 ];
 
@@ -153,9 +194,34 @@ const HomeScreen = props => {
             }}
           ></ImageBackground>
         </View>
-        <Text numberOfLines={2} style={{ color: "#515151" }}>
+        <Text
+          numberOfLines={2}
+          style={{ fontFamily: "Roboto-Light", color: "#515151" }}
+        >
           {data.title}
         </Text>
+      </TouchableOpacity>
+    );
+  };
+
+  RenderServices = ({ data }) => {
+    return (
+      <TouchableOpacity style={{ height: 100 }}>
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          <View>
+            <Image source={data.icon} style={{ width: 60, height: 60 }} />
+          </View>
+          <View>
+            <View>
+              <Text style={{ fontFamily: "Roboto-Medium" }}>{data.title}</Text>
+            </View>
+            <View style={{ marginRight: 20, backgroundColor: "red" }}>
+              <Text numberOfLines={1} style={{ fontFamily: "Roboto-Light" }}>
+                {data.summary}
+              </Text>
+            </View>
+          </View>
+        </View>
       </TouchableOpacity>
     );
   };
@@ -195,7 +261,13 @@ const HomeScreen = props => {
                       }}
                     >
                       <View style={{ flexDirection: "row" }}>
-                        <Text h4 style={{ color: "#AAAAAA" }}>
+                        <Text
+                          h4
+                          style={{
+                            color: "#AAAAAA",
+                            fontFamily: "Roboto-Bold"
+                          }}
+                        >
                           Training{" "}
                         </Text>
                         <View style={{ marginLeft: 5, marginTop: 5 }}>
@@ -221,42 +293,85 @@ const HomeScreen = props => {
               </View>
             ) : (
               <View style={{ marginTop: 10 }}>
-                <View style={{ marginBottom: 5, marginLeft: 10 }}>
-                  <Text h4 style={{ color: "#AAAAAA" }}>
-                    News Feeds{" "}
-                  </Text>
-                  <Text style={{ color: "#AAAAAA" }}>
-                    Get updates and news feeds{" "}
-                  </Text>
-                </View>
-                <View>
-                  <CardSix
-                    title={"Focus on prevention."}
-                    subTitle={
-                      "Preventative care visits, including health screenings for cholesterol levels, colon cancer, heart problems and more, qualify for Medicare coverage. Seniors also need to get vaccinations that can help prevent influenza and pneumonia."
-                    }
-                    profile={{
-                      uri:
-                        "https://lemag.nikonclub.fr/wp-content/uploads/2016/11/Photo-selection-pour-Nikon-France-Mattia-Bonavida-2016-6.jpg"
-                    }}
-                    image={{
-                      uri:
-                        "https://res.cloudinary.com/chawanangwa/image/upload/v1576282257/62515058_3145476662137095_4364052734014390272_n_uzxn15.jpg"
-                    }}
-                    icon1={"star"}
-                    iconColor1={"#fff"}
-                    iconBackground1={"red"}
-                    onClicked1={() => {
-                      alert("Hello!");
-                    }}
-                    icon2={"rocket"}
-                    iconColor2={"#fff"}
-                    iconBackground2={"purple"}
-                    onClicked2={() => {
-                      alert("Hello!");
-                    }}
-                  />
-                </View>
+                {data.type === "sevices" ? (
+                  <View style={{ marginLeft: 10 }}>
+                    <TouchableOpacity
+                      onPress={() => props.navigation.navigate("ServicesView")}
+                      style={{
+                        marginLeft: 5,
+                        marginTop: 7,
+                        marginBottom: 10
+                      }}
+                    >
+                      <View style={{ flexDirection: "row" }}>
+                        <Text
+                          h4
+                          style={{
+                            color: "#AAAAAA",
+                            fontFamily: "Roboto-Bold"
+                          }}
+                        >
+                          HealthCare Services{" "}
+                        </Text>
+                        <View style={{ marginLeft: 5, marginTop: 5 }}>
+                          <Ionicons
+                            name="ios-arrow-dropright"
+                            size={23}
+                            color="#AAAAAA"
+                          />
+                        </View>
+                      </View>
+                      <Text style={{ color: "#AAAAAA" }}>
+                        Our Training is specially delivered In House{" "}
+                      </Text>
+                    </TouchableOpacity>
+                    <FlatList
+                      horizontal={true}
+                      data={data.data}
+                      keyExtractor={item => item.id}
+                      renderItem={({ item }) => <RenderServices data={item} />}
+                    />
+                  </View>
+                ) : (
+                  <View>
+                    <View style={{ marginBottom: 5, marginLeft: 10 }}>
+                      <Text h4 style={{ color: "#AAAAAA" }}>
+                        News Feeds{" "}
+                      </Text>
+                      <Text style={{ color: "#AAAAAA" }}>
+                        Get updates and news feeds{" "}
+                      </Text>
+                    </View>
+                    <View>
+                      <CardSix
+                        title={"Focus on prevention."}
+                        subTitle={
+                          "Preventative care visits, including health screenings for cholesterol levels, colon cancer, heart problems and more, qualify for Medicare coverage. Seniors also need to get vaccinations that can help prevent influenza and pneumonia."
+                        }
+                        profile={{
+                          uri:
+                            "https://lemag.nikonclub.fr/wp-content/uploads/2016/11/Photo-selection-pour-Nikon-France-Mattia-Bonavida-2016-6.jpg"
+                        }}
+                        image={{
+                          uri:
+                            "https://res.cloudinary.com/chawanangwa/image/upload/v1576282257/62515058_3145476662137095_4364052734014390272_n_uzxn15.jpg"
+                        }}
+                        icon1={"star"}
+                        iconColor1={"#fff"}
+                        iconBackground1={"red"}
+                        onClicked1={() => {
+                          alert("Hello!");
+                        }}
+                        icon2={"rocket"}
+                        iconColor2={"#fff"}
+                        iconBackground2={"purple"}
+                        onClicked2={() => {
+                          alert("Hello!");
+                        }}
+                      />
+                    </View>
+                  </View>
+                )}
               </View>
             )}
           </View>
