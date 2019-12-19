@@ -1,8 +1,19 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { ListItem } from "react-native-elements";
+import HeaderImageScrollView, {
+  TriggeringView
+} from "react-native-image-header-scroll-view";
+import { IconToggle } from "react-native-material-ui";
+import * as Animatable from "react-native-animatable";
+import { Header } from "react-navigation-stack";
+
+const MIN_HEIGHT = 45;
+const MAX_HEIGHT = 200;
 
 const Monitor = () => {
+  let textInput = null;
+
   const list = [
     {
       name: "Basic information",
@@ -31,16 +42,7 @@ const Monitor = () => {
   ];
   return (
     <View>
-      {list.map((l, i) => (
-        <ListItem
-          key={i}
-          //   leftAvatar={{ source: { uri: l.avatar_url } }}
-          leftIcon={{ name: l.icon }}
-          title={l.name}
-          subtitle={l.subtitle}
-          bottomDivider
-        />
-      ))}
+      
     </View>
   );
 };
