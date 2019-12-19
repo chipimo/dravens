@@ -17,7 +17,7 @@ const DATA = [
   },
   {
     img:
-      "https://res.cloudinary.com/chawanangwa/image/upload/v1576282284/66342585_2387694371468181_6021474935594024960_n_nrjbqe.jpg",
+      "https://res.cloudinary.com/chawanangwa/image/upload/v1576567350/66258261_432012277640677_254627926417342464_n_au2gp5.jpg",
     title: "CARE CERTIFICATE",
     author: "Dravens",
     id: "hdf2aw36seu",
@@ -26,7 +26,7 @@ const DATA = [
   },
   {
     img:
-      "https://res.cloudinary.com/chawanangwa/image/upload/v1576282284/66342585_2387694371468181_6021474935594024960_n_nrjbqe.jpg",
+      "https://res.cloudinary.com/chawanangwa/image/upload/v1576567474/66127061_957336111332158_1926395640888164352_n_qsxwkx.jpg",
     title: "CHALLENGING BEHAVIOR",
     author: "Dravens",
     id: "hdf2aw3we6eu",
@@ -35,7 +35,7 @@ const DATA = [
   },
   {
     img:
-      "https://res.cloudinary.com/chawanangwa/image/upload/v1576282284/66342585_2387694371468181_6021474935594024960_n_nrjbqe.jpg",
+      "https://res.cloudinary.com/chawanangwa/image/upload/v1576567547/66373088_370109557023908_8588405072541515776_n_jvpb4n.jpg",
     title: "INFECTION CONTRO",
     author: "Dravens",
     id: "hdf2aw36seu",
@@ -44,7 +44,7 @@ const DATA = [
   },
   {
     img:
-      "https://res.cloudinary.com/chawanangwa/image/upload/v1576282284/66342585_2387694371468181_6021474935594024960_n_nrjbqe.jpg",
+      "https://res.cloudinary.com/chawanangwa/image/upload/v1576282289/66284695_341223656771200_1127798767718760448_n_plitse.jpg",
     title: "DEVELOP AS A CARE WORKER",
     author: "Dravens",
     id: "hdf2aw36seu",
@@ -53,7 +53,7 @@ const DATA = [
   },
   {
     img:
-      "https://res.cloudinary.com/chawanangwa/image/upload/v1576282284/66342585_2387694371468181_6021474935594024960_n_nrjbqe.jpg",
+      "https://res.cloudinary.com/chawanangwa/image/upload/v1576725665/66320553_625255957960762_8916166791542079488_n_gzdcxo.jpg",
     title: "STRESS MANAGEMENT",
     author: "Dravens",
     id: "hdf2aw36seu",
@@ -62,7 +62,7 @@ const DATA = [
   },
   {
     img:
-      "https://res.cloudinary.com/chawanangwa/image/upload/v1576282284/66342585_2387694371468181_6021474935594024960_n_nrjbqe.jpg",
+      "https://res.cloudinary.com/chawanangwa/image/upload/v1576725791/66349194_687955471628521_5780667951942205440_n_oeucto.jpg",
     title: "DOLS",
     author: "Dravens",
     id: "hdf2aw36seu",
@@ -71,7 +71,7 @@ const DATA = [
   },
   {
     img:
-      "https://res.cloudinary.com/chawanangwa/image/upload/v1576282284/66342585_2387694371468181_6021474935594024960_n_nrjbqe.jpg",
+      "https://res.cloudinary.com/chawanangwa/image/upload/v1576725753/66852422_630773337428568_8357756884840611840_n_nqzzvw.jpg",
     title: "MEDICATION MANAGEMENT",
     author: "Dravens",
     id: "hdf2aw36seu",
