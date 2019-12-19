@@ -4,6 +4,11 @@ import { connect } from "react-redux";
 import { CardEcomFour } from "react-native-card-ui";
 import { IconToggle } from "react-native-material-ui";
 import { useSelector } from "react-redux";
+import { NavigationActions } from "react-navigation";
+
+const backAction = NavigationActions.back({
+  key: null
+});
 
 const DATA = [
   {
@@ -127,7 +132,7 @@ const Events = props => {
       >
         <IconToggle
           onPress={() => {
-            props.navigation.goBack();
+            props.navigation.dispatch(backAction);
           }}
           color={"#DFDEE0"}
           name="keyboard-arrow-left"
