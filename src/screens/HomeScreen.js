@@ -6,31 +6,19 @@ import {
   ImageBackground,
   StyleSheet,
   TouchableOpacity,
-  Image
+  Image,
+  Dimensions
 } from "react-native";
 import { Text } from "react-native-elements";
-import {
-  CardOne,
-  CardTwo,
-  CardThree,
-  CardFour,
-  CardFive,
-  CardSix,
-  CardSeven,
-  CardEight,
-  CardNine,
-  CardTen,
-  CardEleven,
-  CardTwelve,
-  CardEcomOne,
-  CardEcomTwo,
-  CardEcomThree,
-  CardEcomFour
-} from "react-native-card-ui";
+import { CardFour, CardSix, CardSeven } from "../components/Cards";
 import moment from "moment";
 import { Ionicons } from "@expo/vector-icons";
 import { connect } from "react-redux";
 import { useSelector } from "react-redux";
+import { scale, verticalScale, moderateScale } from "react-native-size-matters";
+
+const DeviceWidth = Dimensions.get("window").width;
+const DeviceHeight = Dimensions.get("window").height;
 
 const DATA = [
   {
@@ -50,9 +38,9 @@ const DATA = [
         id: "58694a0f-3da1-471f-bd96-1455719d0",
         subTitle: "What is Safeguarding Training & Why is it so Important?",
         summary:
-          "Preventative care visits, including health screenings for cholesterol" +
-          "levels, colon cancer, heart problems and more, qualify for Medicare" +
-          "coverage. Seniors also need to get vaccinations that can help prevent" +
+          "Preventative care visits, including health screenings for cholesterol " +
+          "levels, colon cancer, heart problems and more, qualify for Medicare " +
+          "coverage. Seniors also need to get vaccinations that can help prevent " +
           "influenza and pneumonia  " +
           "  " +
           "A vulnerable adult is defined as a person who, for any reason, may be unable to take care of themselves or protect themselves against significant harm or exploitation. Safeguarding vulnerable adults involves reducing or preventing the risk of significant harm from neglect or abuse, while also supporting people to maintain control of their own lives.",
@@ -96,34 +84,34 @@ const DATA = [
     title: "HealthCare Services",
     data: [
       {
-        id: "58694a0f-3da1-471f-bd96-145571e242",
+        id: "58694a0f-3da1-471f-b96-145571e242",
         title: "MEAL PREPARATION",
         summary:
-          "We are a specialist care service providing" +
-          "the home care services and support to" +
-          "individuals living in the comfort of their" +
+          "We are a specialist care service providing " +
+          "the home care services and support to " +
+          "individuals living in the comfort of their " +
           "own homes",
         contant: "",
         icon: require("../assets/imageIcons/icons8-vegan-food-64.png")
       },
       {
-        id: "58694a0f-3da1-471f-bd96-145571e242",
+        id: "58694a0f-3da1-471f-bd96-145571e22",
         title: "MEDICATION SUPPORT",
         summary:
-          "We are a specialist care service providing" +
-          "the home care services and support to" +
-          "individuals living in the comfort of their" +
+          "We are a specialist care service providing " +
+          "the home care services and support to " +
+          "individuals living in the comfort of their " +
           "own homes",
         contant: "",
         icon: require("../assets/imageIcons/icons8-pills-64.png")
       },
       {
-        id: "58694a0f-3da1-471f-bd96-145571e242",
+        id: "58694a0f-da1-471f-bd96-14551e242",
         title: "HOMECARE",
         summary:
-          "We are a specialist care service providing" +
-          "the home care services and support to" +
-          "individuals living in the comfort of their" +
+          "We are a specialist care service providing " +
+          "the home care services and support to " +
+          "individuals living in the comfort of their " +
           "own homes",
         contant: "",
         icon: require("../assets/imageIcons/icons8-hospital-bed-80.png")
@@ -133,7 +121,23 @@ const DATA = [
   {
     type: "feeds",
     id: "58694a0f-3da1-471f-bd96-145571e29d72",
-    title: "News Feeds"
+    title: "News Feeds",
+    data: [
+      {
+        id: "5869f-da1-471f-bd96-14551e242",
+        title: "Focus on prevention.",
+        summary:
+          "We are a specialist care service providing " +
+          "the home care services and support to " +
+          "individuals living in the comfort of their " +
+          "own homes",
+        contant: "",
+        image:
+          "https://res.cloudinary.com/chawanangwa/image/upload/v1576282257/62515058_3145476662137095_4364052734014390272_n_uzxn15.jpg",
+        icon:
+          "https://lemag.nikonclub.fr/wp-content/uploads/2016/11/Photo-selection-pour-Nikon-France-Mattia-Bonavida-2016-6.jpg"
+      }
+    ]
   }
 ];
 
@@ -165,23 +169,19 @@ const HomeScreen = props => {
               title: data.title,
               author: data.author,
               subTitle: data.subTitle,
-              reviews: {
-                num: null,
-                comments: []
-              },
               summary: data.summary
             }
           });
         }}
         style={{
-          width: 150,
+          width: scale(150),
           marginLeft: 10,
           marginRight: 10,
           height: "100%",
           overflow: "hidden"
         }}
       >
-        <View style={{ height: 100, width: "100%" }}>
+        <View style={{ height: verticalScale(90), width: "100%" }}>
           <ImageBackground
             source={{
               uri: data.img
@@ -206,23 +206,51 @@ const HomeScreen = props => {
 
   RenderServices = ({ data }) => {
     return (
-      <TouchableOpacity style={{ height: 100 }}>
-        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <View>
-            <Image source={data.icon} style={{ width: 60, height: 60 }} />
-          </View>
-          <View>
-            <View>
-              <Text style={{ fontFamily: "Roboto-Medium" }}>{data.title}</Text>
-            </View>
-            <View style={{ marginRight: 20, backgroundColor: "red" }}>
-              <Text numberOfLines={1} style={{ fontFamily: "Roboto-Light" }}>
-                {data.summary}
-              </Text>
-            </View>
-          </View>
-        </View>
-      </TouchableOpacity>
+      <CardSeven
+        title={data.title}
+        subTitle={data.summary}
+        image={data.icon}
+        icon1={"share"}
+        iconColor1={"#fff"}
+        iconBackground1={"#D9D9D9"}
+        onClicked1={() => {
+          alert("Hello!");
+        }}
+        icon2={"heart"}
+        iconColor2={"#fff"}
+        iconBackground2={"red"}
+        onClicked2={() => {
+          alert("Hello!");
+        }}
+      />
+    );
+  };
+
+  RenderFeeds = ({ data }) => {
+    return (
+      <CardSix
+        title={data.title}
+        subTitle={data.summary}
+        stars={234}
+        profile={{
+          uri: data.icon
+        }}
+        image={{
+          uri: data.image
+        }}
+        icon1={"star"}
+        iconColor1={"#fff"}
+        iconBackground1={"red"}
+        onClicked1={() => {
+          alert("Hello!");
+        }}
+        icon2={"rocket"}
+        iconColor2={"#fff"}
+        iconBackground2={"purple"}
+        onClicked2={() => {
+          alert("Hello!");
+        }}
+      />
     );
   };
 
@@ -294,11 +322,11 @@ const HomeScreen = props => {
             ) : (
               <View style={{ marginTop: 10 }}>
                 {data.type === "sevices" ? (
-                  <View style={{ marginLeft: 10 }}>
+                  <View>
                     <TouchableOpacity
                       onPress={() => props.navigation.navigate("ServicesView")}
                       style={{
-                        marginLeft: 5,
+                        marginLeft: 15,
                         marginTop: 7,
                         marginBottom: 10
                       }}
@@ -326,7 +354,6 @@ const HomeScreen = props => {
                       </Text>
                     </TouchableOpacity>
                     <FlatList
-                      horizontal={true}
                       data={data.data}
                       keyExtractor={item => item.id}
                       renderItem={({ item }) => <RenderServices data={item} />}
@@ -334,42 +361,55 @@ const HomeScreen = props => {
                   </View>
                 ) : (
                   <View>
-                    <View style={{ marginBottom: 5, marginLeft: 10 }}>
-                      <Text h4 style={{ color: "#AAAAAA" }}>
-                        News Feeds{" "}
-                      </Text>
-                      <Text style={{ color: "#AAAAAA" }}>
-                        Get updates and news feeds{" "}
-                      </Text>
-                    </View>
-                    <View>
-                      <CardSix
-                        title={"Focus on prevention."}
-                        subTitle={
-                          "Preventative care visits, including health screenings for cholesterol levels, colon cancer, heart problems and more, qualify for Medicare coverage. Seniors also need to get vaccinations that can help prevent influenza and pneumonia."
-                        }
-                        profile={{
-                          uri:
-                            "https://lemag.nikonclub.fr/wp-content/uploads/2016/11/Photo-selection-pour-Nikon-France-Mattia-Bonavida-2016-6.jpg"
-                        }}
-                        image={{
-                          uri:
-                            "https://res.cloudinary.com/chawanangwa/image/upload/v1576282257/62515058_3145476662137095_4364052734014390272_n_uzxn15.jpg"
-                        }}
-                        icon1={"star"}
-                        iconColor1={"#fff"}
-                        iconBackground1={"red"}
-                        onClicked1={() => {
-                          alert("Hello!");
-                        }}
-                        icon2={"rocket"}
-                        iconColor2={"#fff"}
-                        iconBackground2={"purple"}
-                        onClicked2={() => {
-                          alert("Hello!");
-                        }}
-                      />
-                    </View>
+                    {data.type === "feeds" ? (
+                      <View>
+                        <View style={{ marginBottom: 5, marginLeft: 10 }}>
+                          <View>
+                            <TouchableOpacity
+                              onPress={() =>
+                                props.navigation.navigate("Events")
+                              }
+                              style={{
+                                marginLeft: 2,
+                                marginTop: 7,
+                                marginBottom: 4
+                              }}
+                            >
+                              <View style={{ flexDirection: "row" }}>
+                                <Text
+                                  h4
+                                  style={{
+                                    color: "#AAAAAA",
+                                    fontFamily: "Roboto-Bold"
+                                  }}
+                                >
+                                  News feeds{" "}
+                                </Text>
+                                <View style={{ marginLeft: 5, marginTop: 5 }}>
+                                  <Ionicons
+                                    name="ios-arrow-dropright"
+                                    size={23}
+                                    color="#AAAAAA"
+                                  />
+                                </View>
+                              </View>
+                              <Text style={{ color: "#AAAAAA" }}>
+                                Get news feeds and updates{" "}
+                              </Text>
+                            </TouchableOpacity>
+                          </View>
+                        </View>
+                        <View>
+                          <FlatList
+                            data={data.data}
+                            keyExtractor={item => item.id}
+                            renderItem={({ item }) => (
+                              <RenderFeeds data={item} />
+                            )}
+                          />
+                        </View>
+                      </View>
+                    ) : null}
                   </View>
                 )}
               </View>

@@ -22,12 +22,23 @@ import EventViewer from "../screens/EventViewer";
 import ServicesView from "../screens/ServicesView";
 
 /////Tab navigation
+
+const EventStack = createStackNavigator({
+  Main: Events,
+  EventModal: EventViewer
+});
+
+EventStack.navigationOptions = {
+  mode: "modal",
+  header: null
+};
+
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
-  Events: Events,
+  Events: EventStack,
   EventViewer: EventViewer,
   ServicesView: ServicesView,
-  FeedViewer: FeedViewer,
+  FeedViewer: FeedViewer
 });
 
 HomeStack.navigationOptions = {

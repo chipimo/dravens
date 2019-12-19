@@ -6,12 +6,6 @@ const EventCard = (
       img: "",
       title: "",
       author: "",
-      price: 0,
-      reviews: {
-        num: null,
-        comments: []
-      },
-      rating: 0,
       summary: "",
       date: "",
       time: ""
@@ -36,12 +30,6 @@ const EventCard = (
           img: "",
           title: "",
           author: "",
-          price: 0,
-          reviews: {
-            num: null,
-            comments: []
-          },
-          rating: 0,
           summary: "",
           date: "",
           time: ""

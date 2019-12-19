@@ -21,7 +21,7 @@ import GestureRecognizer, {
 } from "react-native-swipe-gestures";
 
 const MIN_HEIGHT = 45;
-const MAX_HEIGHT = 200;
+const MAX_HEIGHT = 200; 
 
 const EventViewer = props => {
   let textInput = null;
