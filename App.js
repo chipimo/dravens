@@ -21,7 +21,11 @@ export default function App() {
       "Roboto-Bold": require("./src/assets/fonts/Roboto-Bold.ttf"),
       "Roboto-Medium": require("./src/assets/fonts/Roboto-Medium.ttf"),
       "Roboto-Regular": require("./src/assets/fonts/Roboto-Regular.ttf"),
-      "Roboto-Light": require("./src/assets/fonts/Roboto-Light.ttf")
+      "Roboto-Light": require("./src/assets/fonts/Roboto-Light.ttf"),
+      "Segoe-UI-Bold-Italic": require("./src/assets/fonts/Segoe-UI-Bold-Italic.ttf"),
+      "Segoe-UI-Italic": require("./src/assets/fonts/Segoe-UI-Italic.ttf"),
+      "Segoe-UI": require("./src/assets/fonts/Segoe-UI.ttf"),
+      "Segoe-UI-Bold": require("./src/assets/fonts/Segoe-UI-Bold.ttf")
     });
   };
 
