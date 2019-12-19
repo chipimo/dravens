@@ -11,24 +11,23 @@ import {
   TouchableOpacity,
   ScrollView
 } from "react-native";
-import propTypes from 'prop-types'
+import propTypes from "prop-types";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 
 import Icon from "react-native-vector-icons/FontAwesome";
-import { Button } from 'react-native-material-ui';
+import { Button } from "react-native-material-ui";
 
 let screenWidth = Dimensions.get("window").width;
 let screenHeight = Dimensions.get("window").height;
 
-
 export class CardOne extends Component<Props> {
-  static defaultProps={
-    width:100,
-    height:100,
-    borderRadius:0,
-    shadowColor:"#000000",
-    image:require("./placeholderImage.jpg"),
-  }
+  static defaultProps = {
+    width: 100,
+    height: 100,
+    borderRadius: 0,
+    shadowColor: "#000000",
+    image: require("./placeholderImage.jpg")
+  };
   constructor(props) {
     super(props);
   }
@@ -41,8 +40,8 @@ export class CardOne extends Component<Props> {
           borderRadius: borderRadius,
           marginLeft: 10,
           width: scale(width),
-          height:  scale(height),
-          backgroundColor:'#f9f9f9',
+          height: scale(height),
+          backgroundColor: "#f9f9f9",
           shadowColor: shadowColor,
           shadowOpacity: 0.3,
           shadowRadius: 5,
@@ -67,26 +66,19 @@ export class CardOne extends Component<Props> {
 }
 
 export class CardTwo extends Component<Props> {
-  static defaultProps={
-    title:"",
-    subTitle:"",
-    profile:require('./placeholderImage.jpg'),
-    icon:"",
-    iconColor:"",
-    image:require("./placeholderImage.jpg")
-  }
+  static defaultProps = {
+    title: "",
+    subTitle: "",
+    profile: require("./placeholderImage.jpg"),
+    icon: "",
+    iconColor: "",
+    image: require("./placeholderImage.jpg")
+  };
   constructor(props) {
     super(props);
   }
   render() {
-    const {
-      title,
-      subTitle,
-      image,
-      profile,
-      icon,
-      iconColor
-    } = this.props;
+    const { title, subTitle, image, profile, icon, iconColor } = this.props;
     return (
       <View
         style={{
@@ -186,11 +178,7 @@ export class CardTwo extends Component<Props> {
               }}
             >
               {icon ? (
-                <Icon
-                  name={icon}
-                  color={iconColor}
-                  size={scale(20)}
-                />
+                <Icon name={icon} color={iconColor} size={scale(20)} />
               ) : null}
             </View>
           </View>
@@ -201,9 +189,7 @@ export class CardTwo extends Component<Props> {
 }
 
 export class CardThree extends Component<Props> {
-  static defaultProps={
-
-  }
+  static defaultProps = {};
   constructor(props) {
     super(props);
   }
@@ -310,9 +296,7 @@ export class CardThree extends Component<Props> {
 }
 
 export class CardFour extends Component<Props> {
-  static defaultProps={
-
-  }
+  static defaultProps = {};
   constructor(props) {
     super(props);
   }
@@ -409,10 +393,9 @@ export class CardFour extends Component<Props> {
 }
 
 export class CardFive extends Component<Props> {
-  static defaultProps={
-
-    image:require("./placeholderImage.jpg")
-  }
+  static defaultProps = {
+    image: require("./placeholderImage.jpg")
+  };
   constructor(props) {
     super(props);
   }
@@ -559,9 +542,11 @@ export class CardFive extends Component<Props> {
                     alignSelf: "center"
                   }}
                 >
-                  ({this.props.nbStar +
+                  (
+                  {this.props.nbStar +
                     " star" +
-                    (this.props.nbStar > scale(1) ? "s" : "")})
+                    (this.props.nbStar > scale(1) ? "s" : "")}
+                  )
                 </Text>
               </View>
             </View>
@@ -573,9 +558,7 @@ export class CardFive extends Component<Props> {
 }
 
 export class CardSix extends Component<Props> {
-  static defaultProps={
-
-  }
+  static defaultProps = {};
   constructor(props) {
     super(props);
   }
@@ -605,14 +588,14 @@ export class CardSix extends Component<Props> {
             backgroundColor: "transparent",
             height: verticalScale(250)
           }}
-          >
+        >
           <Image
             borderRadius={12}
             source={this.props.image}
             style={{
               width: screenWidth - scale(20),
               height: verticalScale(250),
-              resizeMode: "cover",
+              resizeMode: "cover"
             }}
           />
         </View>
@@ -636,9 +619,7 @@ export class CardSix extends Component<Props> {
               justifyContent: "flex-end",
               alignItems: "flex-end"
             }}
-          >
-            
-          </View>
+          ></View>
           <View
             style={{
               flexDirection: "row",
@@ -666,12 +647,16 @@ export class CardSix extends Component<Props> {
                   fontSize: scale(12)
                 }}
               >
-                {
-                  this.props.subTitle
-                }
+                {this.props.subTitle}
               </Text>
-              <View style={{flexDirection: 'row', justifyContent: 'flex-start', paddingLeft:6}}>
-                <View style={{flexDirection:'row',  }}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "flex-start",
+                  paddingLeft: 6
+                }}
+              >
+                <View style={{ flexDirection: "row" }}>
                   <TouchableOpacity
                     onPress={() => this.props.onClicked1()}
                     style={[
@@ -719,19 +704,19 @@ export class CardSix extends Component<Props> {
                     />
                   </TouchableOpacity>
                 </View>
-                <View style={{flexDirection:'row', marginTop:10, marginLeft:5}}>
-                  <View style={{marginTop:2,}}>
-                    <Icon
-                      name="star"
-                      color="#CCCCCC"
-                      size={scale(16)}
-                    />
+                <View
+                  style={{ flexDirection: "row", marginTop: 10, marginLeft: 5 }}
+                >
+                  <View style={{ marginTop: 2 }}>
+                    <Icon name="star" color="#CCCCCC" size={scale(16)} />
                   </View>
-                  <Text style={{
-                    color:"#CCCCCC", 
-                    fontFamily:'Roboto-Light', 
-                    marginLeft:9
-                  }}>
+                  <Text
+                    style={{
+                      color: "#CCCCCC",
+                      fontFamily: "Roboto-Light",
+                      marginLeft: 9
+                    }}
+                  >
                     {this.props.stars} stras
                   </Text>
                 </View>
@@ -745,9 +730,7 @@ export class CardSix extends Component<Props> {
 }
 
 export class CardSeven extends Component<Props> {
-  static defaultProps={
-
-  }
+  static defaultProps = {};
   constructor(props) {
     super(props);
   }
@@ -828,41 +811,42 @@ export class CardSeven extends Component<Props> {
                   fontSize: scale(12)
                 }}
               >
-                {
-                  this.props.subTitle
-                }
+                {this.props.subTitle}
               </Text>
-              <View
-                style={{
-                  flexDirection: "row",
-                  zIndex: scale(4),
-                  flex: 1,
-                  marginTop: 10,
-                  justifyContent: "flex-start",
-                  alignItems: "flex-start"
-                }}
-              >
-                <TouchableOpacity
-                  onPress={() => this.props.onClicked1()}
-                  style={[
-                    {
-                      justifyContent: "center",
-                      zIndex: 3,
-                      alignItems: "center",
-                      alignSelf: "flex-end",
-                      width: scale(100),
-                      height: scale(30),
-                      margin: 10,
-                      shadowRadius: 5,
-                      borderRadius: scale(15),
-                      backgroundColor: this.props.iconBackground1
-                    }
-                  ]}
+              {this.props.showBtn ? (
+                <View
+                  style={{
+                    flexDirection: "row",
+                    zIndex: scale(4),
+                    flex: 1,
+                    marginTop: 10,
+                    justifyContent: "flex-start",
+                    alignItems: "flex-start"
+                  }}
                 >
-                  <Text style={{color:this.props.iconColor1}}>Read more</Text>
-                </TouchableOpacity>
-                
-              </View>
+                  <TouchableOpacity
+                    onPress={() => this.props.onClicked1()}
+                    style={[
+                      {
+                        justifyContent: "center",
+                        zIndex: 3,
+                        alignItems: "center",
+                        alignSelf: "flex-end",
+                        width: scale(100),
+                        height: scale(30),
+                        margin: 10,
+                        shadowRadius: 5,
+                        borderRadius: scale(15),
+                        backgroundColor: this.props.iconBackground1
+                      }
+                    ]}
+                  >
+                    <Text style={{ color: this.props.iconColor1 }}>
+                      Read more
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              ) : null}
             </View>
           </View>
         </View>
@@ -872,9 +856,7 @@ export class CardSeven extends Component<Props> {
 }
 
 export class CardEight extends Component<Props> {
-  static defaultProps={
-
-  }
+  static defaultProps = {};
   constructor(props) {
     super(props);
   }
@@ -959,9 +941,7 @@ export class CardEight extends Component<Props> {
 }
 
 export class CardNine extends Component<Props> {
-  static defaultProps={
-
-  }
+  static defaultProps = {};
   constructor(props) {
     super(props);
     this.state = {
@@ -978,7 +958,7 @@ export class CardNine extends Component<Props> {
         style={{
           margin: scale(10),
           alignSelf: "flex-end",
-          width: screenWidth-100,
+          width: screenWidth - 100,
           height: verticalScale(186),
           borderRadius: 12,
           elevation: 3,
@@ -1104,9 +1084,7 @@ export class CardNine extends Component<Props> {
 }
 
 export class CardTen extends Component<Props> {
-  static defaultProps={
-
-  }
+  static defaultProps = {};
   constructor(props) {
     super(props);
     this.state = {
@@ -1185,7 +1163,7 @@ export class CardTen extends Component<Props> {
               <Text
                 style={{
                   color: "#535bfe",
-                  fontWeight:"bold",
+                  fontWeight: "bold",
                   fontSize: scale(12),
                   letterSpacing: -0.29,
                   lineHeight: scale(16)
@@ -1237,9 +1215,7 @@ export class CardTen extends Component<Props> {
 }
 
 export class CardEleven extends Component<Props> {
-  static defaultProps={
-
-  }
+  static defaultProps = {};
   constructor(props) {
     super(props);
     this.state = { star: 3 };
@@ -1475,18 +1451,18 @@ export class CardTwelve extends Component<Props> {
   constructor(props) {
     super(props);
   }
-    progressColor = step => {
+  progressColor = step => {
     if (step < 0.3) {
       return "red";
     } else if (step >= 0.3 && step < 0.7) {
       return "yellow";
-      } else if (step >= 0.7 && step < 1) {
+    } else if (step >= 0.7 && step < 1) {
       return "blue";
     } else if (step == 1) {
       return "green";
     }
   };
-    render() {
+  render() {
     return (
       <View
         style={{
@@ -1519,32 +1495,30 @@ export class CardTwelve extends Component<Props> {
             }}
           />
 
-            <Text
-              style={{
-                fontSize: 14,
-                marginTop: 15,
-                fontWeight: "bold",
-                width: 150
-              }}
-            >
-              {this.props.title.length > 20
-                ? this.props.title.substring(0, 15) + "..."
-                : this.props.title}
-            </Text>
+          <Text
+            style={{
+              fontSize: 14,
+              marginTop: 15,
+              fontWeight: "bold",
+              width: 150
+            }}
+          >
+            {this.props.title.length > 20
+              ? this.props.title.substring(0, 15) + "..."
+              : this.props.title}
+          </Text>
 
-
-            <Text
-              style={{
-                width: 150,
-                fontSize: 12,
-                color: "#bbb",
-                marginTop: 5,
-                marginBottom: 10
-              }}
-            >
-              {this.props.subTitle}
-            </Text>
-
+          <Text
+            style={{
+              width: 150,
+              fontSize: 12,
+              color: "#bbb",
+              marginTop: 5,
+              marginBottom: 10
+            }}
+          >
+            {this.props.subTitle}
+          </Text>
 
           {this.props.viewProgress == true ? (
             <View>

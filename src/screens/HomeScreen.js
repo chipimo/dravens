@@ -201,6 +201,7 @@ const HomeScreen = props => {
         title={data.title}
         subTitle={data.summary}
         image={data.icon}
+        showBtn={false}
         icon1={"share"}
         iconColor1={"#fff"}
         iconBackground1={"#D9D9D9"}
@@ -358,7 +359,7 @@ const HomeScreen = props => {
                           <View>
                             <TouchableOpacity
                               onPress={() =>
-                                props.navigation.navigate("Events")
+                                props.navigation.navigate("FeedViewer")
                               }
                               style={{
                                 marginLeft: 2,
@@ -374,7 +375,7 @@ const HomeScreen = props => {
                                     fontFamily: "Roboto-Bold"
                                   }}
                                 >
-                                  News feeds{" "}
+                                  Blog{" "}
                                 </Text>
                                 <View style={{ marginLeft: 5, marginTop: 5 }}>
                                   <Ionicons

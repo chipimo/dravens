@@ -148,6 +148,7 @@ CardSix.propTypes = {
 };
 CardSeven.propTypes = {
   title: propTypes.string.isRequired,
+  showBtn: propTypes.bool.isRequired,
   subTitle: propTypes.string.isRequired,
   image: propTypes.oneOfType([propTypes.number, propTypes.object]).isRequired,
   icon1: propTypes.string.isRequired,
