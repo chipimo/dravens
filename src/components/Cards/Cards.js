@@ -796,7 +796,7 @@ export class CardSeven extends Component<Props> {
         <View
           style={{
             flex: 3,
-            height: scale(150),
+            height: scale(170),
             padding: scale(5),
             marginTop: 0
           }}
@@ -837,7 +837,7 @@ export class CardSeven extends Component<Props> {
                   flexDirection: "row",
                   zIndex: scale(4),
                   flex: 1,
-                  marginTop: -0,
+                  marginTop: 10,
                   justifyContent: "flex-start",
                   alignItems: "flex-start"
                 }}

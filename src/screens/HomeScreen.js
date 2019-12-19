@@ -66,15 +66,6 @@ const DATA = [
         title: "Challenging behavior",
         img:
           "https://res.cloudinary.com/chawanangwa/image/upload/v1576567474/66127061_957336111332158_1926395640888164352_n_qsxwkx.jpg"
-      },
-      {
-        id: "58694a0f-3da1-471f-bd96-145571e29dsafrd0",
-        subTitle: "What is Safeguarding Training & Why is it so Important?",
-        summary: "",
-        author: "Dravens",
-        title: "Infection control",
-        img:
-          "https://res.cloudinary.com/chawanangwa/image/upload/v1576567547/66373088_370109557023908_8588405072541515776_n_jvpb4n.jpg"
       }
     ]
   },
