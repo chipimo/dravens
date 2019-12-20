@@ -2,8 +2,9 @@ import { NAVTO, NAVREST } from "./types";
 
 const NavData = (
   state = {
-    routeName: "home",
-    naviget: null
+    routeName: "sidebar",
+    naviget: null,
+    isModal: false
   },
   action
 ) => {
@@ -12,14 +13,16 @@ const NavData = (
       state = {
         ...state,
         routeName: action.routeName,
-        naviget: action.payload.naviget
+        naviget: action.payload.naviget,
+        isModal: action.payload.isModal
       };
       break;
     case NAVREST:
       state = {
         ...state,
-        routeName: "",
-        naviget: null
+        routeName: "sidebar",
+        naviget: null,
+        isModal: false
       };
       break;
     default:

@@ -4,6 +4,7 @@ import { Toolbar } from "react-native-material-ui";
 import { Ionicons } from "@expo/vector-icons";
 import { connect } from "react-redux";
 import { IconToggle } from "react-native-material-ui";
+import { NavigationActions } from "react-navigation";
 
 const X_WIDTH = 375;
 const X_HEIGHT = 812;
@@ -34,7 +35,13 @@ const ToolBar = props => {
         leftElement={
           <View style={{ marginLeft: 2 }}>
             <IconToggle
-              onPress={() => props.navigation.openDrawer()}
+              onPress={() => {
+                props.navData.routeName === "sidebar"
+                  ? props.navigation.openDrawer()
+                  : props.navData.isModal
+                  ? props.navigation.goBack()
+                  : props.navData.naviget();
+              }}
               children={
                 <Ionicons
                   name={Platform.OS === "ios" ? "ios-menu" : "md-menu"}
