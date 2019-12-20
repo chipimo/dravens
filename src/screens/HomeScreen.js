@@ -447,7 +447,8 @@ HomeScreen.navigationOptions = {
 function mapStateToProps(state) {
   return {
     EventCard: state.EventCard,
-    User: state.User
+    User: state.User,
+    navData: state.navData
   };
 }
 

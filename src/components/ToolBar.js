@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StatusBar, Dimensions, Platform } from "react-native";
 import { Toolbar } from "react-native-material-ui";
 import { Ionicons } from "@expo/vector-icons";
+import { connect } from "react-redux";
 
 const X_WIDTH = 375;
 const X_HEIGHT = 812;
@@ -30,23 +31,38 @@ const ToolBar = props => {
       <View style={{ height: StatusBarHeight, backgroundColor: "#4C0D6B" }} />
       <Toolbar
         leftElement="menu"
-        centerElement={ 
-          <Text
-            style={{
-              fontFamily: "Roboto-Medium",
-              color: "#E3E2E3",
-              fontSize: 20
-            }}
-          >
-            Home
-          </Text>
+        centerElement={
+          <View style={{ flexDirection: "row" }}>
+            <Text
+              style={{
+                fontFamily: "Segoe-UI-Bold",
+                color: "#D5D4D5",
+                fontSize: 17
+              }}
+            >
+              Dravens
+            </Text>
+            <Text
+              style={{
+                fontFamily: "Segoe-UI",
+                color: "#D5D4D5",
+                fontSize: 17,
+                marginLeft: 3
+              }}
+            >
+              HelthCare
+            </Text>
+          </View>
         }
-        rightElement={{
-          menu: {
-            icon: "more-vert",
-            labels: ["item 1", "item 2"]
-          }
-        }}
+        rightElement={
+          <View style={{ marginRight: 10 }}>
+            <Ionicons
+              name={Platform.OS === "ios" ? "ios-settings" : "md-settings"}
+              color="#D5D4D5"
+              size={23}
+            />
+          </View>
+        }
         onRightElementPress={label => {
           console.log(label);
         }}
@@ -68,4 +84,16 @@ const ToolBar = props => {
   );
 };
 
-export default ToolBar;
+const mapStateToProps = state => {
+  return {
+    navData: state.navData
+  };
+};
+
+const mapDispatchToprops = dispatch => {
+  return {
+    dispatchEvent: data => dispstch(data)
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToprops)(ToolBar);
