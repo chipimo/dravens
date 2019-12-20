@@ -85,11 +85,11 @@ Booking.navigationOptions = {
   }
 };
 
-const More = createStackNavigator({
+const MoreStack = createStackNavigator({
   More: More
 });
 
-User.navigationOptions = {
+MoreStack.navigationOptions = {
   tabBarLabel: "More",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -128,7 +128,7 @@ const MainStack = createBottomTabNavigator(
     MonitorStack,
     Booking,
     Customer,
-    More
+    MoreStack
   },
   {
     tabBarComponent: props => (

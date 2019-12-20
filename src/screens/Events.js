@@ -1,9 +1,17 @@
 import React, { useEffect } from "react";
-import { View, Text, FlatList, SafeAreaView, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  SafeAreaView,
+  StyleSheet,
+  Platform
+} from "react-native";
 import { connect } from "react-redux";
 import { CardEcomFour } from "react-native-card-ui";
 import { IconToggle } from "react-native-material-ui";
 import { useSelector } from "react-redux";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { NavigationActions } from "react-navigation";
 
 const backAction = NavigationActions.back({
@@ -123,6 +131,17 @@ const Events = props => {
   return (
     <SafeAreaView style={styles.container}>
       <Toolbar
+        leftElement={
+          <IconToggle
+            children={
+              Platform.OS === "ios" ? (
+                <Ionicons size={20} name="ios-arrow-back" color="#D5D4D5" />
+              ) : (
+                <MaterialIcons size={20} name="keyboard-arrow-left" color="#D5D4D5" />
+              )
+            }
+          />
+        }
         centerElement={
           <View style={{ flexDirection: "row" }}>
             <Text
@@ -146,7 +165,6 @@ const Events = props => {
             </Text>
           </View>
         }
-        
         style={{
           container: { backgroundColor: "#6B4180" }
         }}
