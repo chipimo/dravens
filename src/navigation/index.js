@@ -1,6 +1,7 @@
 import React from "react";
-import { Platform } from "react-native";
+import { Platform, Dimensions } from "react-native";
 import { createAppContainer } from "react-navigation";
+import { createDrawerNavigator } from "react-navigation-drawer";
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator, BottomTabBar } from "react-navigation-tabs";
 import createAnimatedSwitchNavigator from "react-navigation-animated-switch";
@@ -20,6 +21,7 @@ import Events from "../screens/Events";
 import FeedViewer from "../screens/FeedViewer";
 import EventViewer from "../screens/EventViewer";
 import ServicesView from "../screens/ServicesView";
+import SideMenu from "../screens/SideMenu";
 
 /////Tab navigation
 
@@ -150,11 +152,30 @@ const Stacks = createStackNavigator(
   }
 );
 
+const ManStacks = createDrawerNavigator(
+  {
+    MainUi: {
+      screen: Stacks
+    }
+  },
+  {
+    contentComponent: props => <SideMenu {...props} />,
+    drawerWidth: Dimensions.get("window").width - 50,
+    drawerPosition: "left",
+    contentOptions: {
+      activeTintColor: "#e91e63"
+    },
+    drawerOpenRoute: "LeftSideMenu",
+    drawerCloseRoute: "LeftSideMenuClose",
+    drawerToggleRoute: "LeftSideMenuToggle"
+  }
+);
+
 ////SCREEN SWICHER NAVIGATION//////
 const DravensApp = createAnimatedSwitchNavigator(
   {
     Auth: AuthMonitor,
-    Main: Stacks
+    Main: ManStacks
   },
   {
     initialRouteName: "Main",

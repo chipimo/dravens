@@ -2,7 +2,7 @@ import { NAVTO, NAVREST } from "./types";
 
 const NavData = (
   state = {
-    routeName: "",
+    routeName: "home",
     naviget: null
   },
   action

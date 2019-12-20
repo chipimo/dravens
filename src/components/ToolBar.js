@@ -3,6 +3,7 @@ import { View, Text, StatusBar, Dimensions, Platform } from "react-native";
 import { Toolbar } from "react-native-material-ui";
 import { Ionicons } from "@expo/vector-icons";
 import { connect } from "react-redux";
+import { IconToggle } from "react-native-material-ui";
 
 const X_WIDTH = 375;
 const X_HEIGHT = 812;
@@ -30,7 +31,20 @@ const ToolBar = props => {
       <StatusBar barStyle="light-content" />
       <View style={{ height: StatusBarHeight, backgroundColor: "#4C0D6B" }} />
       <Toolbar
-        leftElement="menu"
+        leftElement={
+          <View style={{ marginLeft: 2 }}>
+            <IconToggle
+              onPress={() => props.navigation.openDrawer()}
+              children={
+                <Ionicons
+                  name={Platform.OS === "ios" ? "ios-menu" : "md-menu"}
+                  color="#D5D4D5"
+                  size={23}
+                />
+              }
+            />
+          </View>
+        }
         centerElement={
           <View style={{ flexDirection: "row" }}>
             <Text
@@ -56,10 +70,14 @@ const ToolBar = props => {
         }
         rightElement={
           <View style={{ marginRight: 10 }}>
-            <Ionicons
-              name={Platform.OS === "ios" ? "ios-settings" : "md-settings"}
-              color="#D5D4D5"
-              size={23}
+            <IconToggle
+              children={
+                <Ionicons
+                  name={Platform.OS === "ios" ? "ios-settings" : "md-settings"}
+                  color="#D5D4D5"
+                  size={23}
+                />
+              }
             />
           </View>
         }
