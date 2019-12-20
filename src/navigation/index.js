@@ -1,7 +1,7 @@
 import React from "react";
 import { Platform, Dimensions } from "react-native";
 import { createAppContainer } from "react-navigation";
-import { createDrawerNavigator } from "react-navigation-drawer";
+import { createDrawerNavigator } from "react-navigat";
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator, BottomTabBar } from "react-navigation-tabs";
 import createAnimatedSwitchNavigator from "react-navigation-animated-switch";
@@ -13,7 +13,7 @@ import SignupScreen from "../screens/auth/SginUp";
 import TabBarIcon from "../components/TabBarIcon";
 import Monitor from "../screens/Monitor";
 import BookingScreen from "../screens/Booking";
-import UserProfile from "../screens/UserProfile";
+import More from "../screens/More";
 import CustomerCare from "../screens/CustomerCare";
 import AuthMonitor from "../screens/auth/AuthMonitor";
 import ToolBar from "../components/ToolBar";
@@ -87,12 +87,12 @@ Booking.navigationOptions = {
   }
 };
 
-const User = createStackNavigator({
-  Booking: UserProfile
+const More = createStackNavigator({
+  More: More
 });
 
 User.navigationOptions = {
-  tabBarLabel: "Profile",
+  tabBarLabel: "More",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -130,7 +130,7 @@ const MainStack = createBottomTabNavigator(
     MonitorStack,
     Booking,
     Customer,
-    User
+    More
   },
   {
     tabBarComponent: props => (
@@ -152,30 +152,11 @@ const Stacks = createStackNavigator(
   }
 );
 
-const ManStacks = createDrawerNavigator(
-  {
-    MainUi: {
-      screen: Stacks
-    }
-  },
-  {
-    contentComponent: props => <SideMenu {...props} />,
-    drawerWidth: Dimensions.get("window").width - 50,
-    drawerPosition: "left",
-    contentOptions: {
-      activeTintColor: "#e91e63"
-    },
-    drawerOpenRoute: "LeftSideMenu",
-    drawerCloseRoute: "LeftSideMenuClose",
-    drawerToggleRoute: "LeftSideMenuToggle"
-  }
-);
-
 ////SCREEN SWICHER NAVIGATION//////
 const DravensApp = createAnimatedSwitchNavigator(
   {
     Auth: AuthMonitor,
-    Main: ManStacks
+    Main: Stacks
   },
   {
     initialRouteName: "Main",
