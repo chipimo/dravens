@@ -21,7 +21,7 @@ import GestureRecognizer, {
 } from "react-native-swipe-gestures";
 
 const MIN_HEIGHT = 45;
-const MAX_HEIGHT = 200; 
+const MAX_HEIGHT = 200;
 
 const EventViewer = props => {
   let textInput = null;
@@ -31,7 +31,7 @@ const EventViewer = props => {
   const didFocus = props.navigation.addListener("didFocus", payload => {
     BackHandler.addEventListener("hardwareBackPress", onBack);
   });
-
+  
   useEffect(() => {
     const willBlur = props.navigation.addListener("willBlur", payload => {});
     return function cleanup() {
@@ -45,6 +45,15 @@ const EventViewer = props => {
       type: "OFFLOADITEMS"
     });
   };
+
+  // onLoadNav = () => {
+  //   console.log("test")
+  //   props.dispatchEvent({
+  //     type: "NAVTO",
+  //     routeName: "EventViewer",
+  //     payload: { naviget: props.navigation.goBack(), isModal: false }
+  //   });
+  // };
 
   return (
     <View style={{ flex: 1 }}>
@@ -86,20 +95,6 @@ const EventViewer = props => {
         )}
         renderForeground={() => (
           <View style={{ flex: 1 }}>
-            <View
-              style={{ flexDirection: "row", justifyContent: "space-between" }}
-            >
-              <IconToggle
-                onPress={() => {
-                  props.dispatchEvent({
-                    type: "OFFLOADITEMS"
-                  });
-                  props.navigation.goBack();
-                }}
-                color={"#FFFFFF"}
-                name="keyboard-arrow-left"
-              />
-            </View>
             <View style={styles.titleContainer}>
               <Text style={styles.imageTitle}>
                 {props.EventCard.data.title}

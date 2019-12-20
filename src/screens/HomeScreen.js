@@ -140,6 +140,7 @@ const HomeScreen = props => {
   useEffect(() => {
     this.getHour();
     if (value) props.navigation.navigate("EventViewer");
+
     return () => {};
   }, [value]);
 
@@ -273,7 +274,14 @@ const HomeScreen = props => {
                 <View style={{ marginBottom: 5, marginLeft: 10 }}>
                   <View>
                     <TouchableOpacity
-                      onPress={() => props.navigation.navigate("Events")}
+                      onPress={() => {
+                        props.dispatchEvent({
+                          type: "NAVTO",
+                          routeName: "EventViewer",
+                          payload: { naviget: props.navigation, isModal: false }
+                        });
+                        props.navigation.navigate("Events");
+                      }}
                       style={{
                         marginLeft: 2,
                         marginTop: 7,

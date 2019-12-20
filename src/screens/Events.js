@@ -122,34 +122,50 @@ const Events = props => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View
-        style={{
-          height: 45,
-          width: "100%",
-          backgroundColor: "#6B52AE",
-          flexDirection: "row"
+      <Toolbar
+        centerElement={
+          <View style={{ flexDirection: "row" }}>
+            <Text
+              style={{
+                fontFamily: "Segoe-UI-Bold",
+                color: "#D5D4D5",
+                fontSize: 17
+              }}
+            >
+              Dravens
+            </Text>
+            <Text
+              style={{
+                fontFamily: "Segoe-UI",
+                color: "#D5D4D5",
+                fontSize: 17,
+                marginLeft: 3
+              }}
+            >
+              HealthCare
+            </Text>
+          </View>
+        }
+        rightElement={
+          <View style={{ marginRight: 10 }}>
+            <IconToggle
+              children={
+                <Ionicons
+                  name={Platform.OS === "ios" ? "ios-settings" : "md-settings"}
+                  color="#D5D4D5"
+                  size={23}
+                />
+              }
+            />
+          </View>
+        }
+        onRightElementPress={label => {
+          console.log(label);
         }}
-      >
-        <IconToggle
-          onPress={() => {
-            props.navigation.dispatch(backAction);
-          }}
-          color={"#DFDEE0"}
-          name="keyboard-arrow-left"
-        />
-        <View style={{ marginTop: 10 }}>
-          <Text
-            style={{
-              fontFamily: "Roboto-Medium",
-              color: "#F7F7F7",
-              fontSize: 19
-            }}
-          >
-            Training
-          </Text>
-        </View>
-      </View>
-
+        style={{
+          container: { backgroundColor: "#6B4180" }
+        }}
+      />
       <FlatList
         data={DATA}
         keyExtractor={item => item.id}

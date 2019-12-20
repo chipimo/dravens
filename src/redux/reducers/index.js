@@ -6,11 +6,12 @@ import NetInfo from "./netInfo";
 import UserInfo from "./userInfo";
 import CardItem from "./CardItem";
 import EventCard from "./EventCard";
+import NavData from "./NavData";
 
 const config = {
   key: "root",
   storage,
-  blacklist: ["NetInfo", "CardItem", "EventCard"]
+  blacklist: ["NetInfo", "CardItem", "EventCard", "NavData"]
 };
 
 const createReducer = () => {
@@ -18,7 +19,8 @@ const createReducer = () => {
     NetInfo: NetInfo,
     user: UserInfo,
     CardItem: CardItem,
-    EventCard: EventCard
+    EventCard: EventCard,
+    NavData: NavData
   });
 };
 

@@ -2,27 +2,22 @@ import { NAVTO, NAVREST } from "./types";
 
 const NavData = (
   state = {
-    routeName: "sidebar",
-    naviget: null,
-    isModal: false
+    routeName: "home",
   },
   action
 ) => {
   switch (action.type) {
     case NAVTO:
+      console.log(action)
       state = {
         ...state,
         routeName: action.routeName,
-        naviget: action.payload.naviget,
-        isModal: action.payload.isModal
       };
       break;
     case NAVREST:
       state = {
         ...state,
-        routeName: "sidebar",
-        naviget: null,
-        isModal: false
+        routeName: "home",
       };
       break;
     default:
