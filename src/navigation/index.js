@@ -1,6 +1,10 @@
 import React from "react";
 import { Platform } from "react-native";
 import { createAppContainer } from "react-navigation";
+<<<<<<< HEAD
+=======
+import { createDrawerNavigator } from "react-navigat";
+>>>>>>> d07cffdd3637d00649fe359853f9b8e2c9f600a2
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator, BottomTabBar } from "react-navigation-tabs";
 import createAnimatedSwitchNavigator from "react-navigation-animated-switch";
@@ -12,7 +16,7 @@ import SignupScreen from "../screens/auth/SginUp";
 import TabBarIcon from "../components/TabBarIcon";
 import Monitor from "../screens/Monitor";
 import BookingScreen from "../screens/Booking";
-import UserProfile from "../screens/UserProfile";
+import More from "../screens/More";
 import CustomerCare from "../screens/CustomerCare";
 import AuthMonitor from "../screens/auth/AuthMonitor";
 import ToolBar from "../components/ToolBar";
@@ -85,12 +89,12 @@ Booking.navigationOptions = {
   }
 };
 
-const User = createStackNavigator({
-  Booking: UserProfile
+const More = createStackNavigator({
+  More: More
 });
 
 User.navigationOptions = {
-  tabBarLabel: "Profile",
+  tabBarLabel: "More",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -128,7 +132,7 @@ const MainStack = createBottomTabNavigator(
     MonitorStack,
     Booking,
     Customer,
-    User
+    More
   },
   {
     tabBarComponent: props => (

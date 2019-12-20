@@ -146,22 +146,7 @@ const Events = props => {
             </Text>
           </View>
         }
-        rightElement={
-          <View style={{ marginRight: 10 }}>
-            <IconToggle
-              children={
-                <Ionicons
-                  name={Platform.OS === "ios" ? "ios-settings" : "md-settings"}
-                  color="#D5D4D5"
-                  size={23}
-                />
-              }
-            />
-          </View>
-        }
-        onRightElementPress={label => {
-          console.log(label);
-        }}
+        
         style={{
           container: { backgroundColor: "#6B4180" }
         }}
