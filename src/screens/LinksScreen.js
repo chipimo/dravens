@@ -15,7 +15,11 @@ import { WebView } from "react-native-webview";
 import { Icon } from "react-native-elements";
 import LottieView from "lottie-react-native";
 import { IconToggle, Toolbar } from "react-native-material-ui";
+<<<<<<< HEAD
 import {connect} from 'react-redux'
+=======
+import { connect } from "react-redux";
+>>>>>>> d2c08a19ed08ee479cdbee8788bfbd36106a37b6
 
 class LinksScreen extends React.Component {
   static navigationOptions = {
@@ -82,9 +86,15 @@ class LinksScreen extends React.Component {
           <IconToggle
             children={
               Platform.OS === "ios" ? (
-                <Ionicons size={20} name="ios-arrow-back" color="#D5D4D5" />
+                <Ionicons
+                  onPress={() => this.props.navigation.naviget.goBack()}
+                  size={20}
+                  name="ios-arrow-back"
+                  color="#D5D4D5"
+                />
               ) : (
                 <MaterialIcons
+                  onPress={() => this.props.navigation.naviget.goBack()}
                   size={20}
                   name="keyboard-arrow-left"
                   color="#D5D4D5"

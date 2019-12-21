@@ -62,8 +62,8 @@ export default class MenuScreen extends React.Component {
           title="Dashboard"
           titleStyle={{ fontFamily: "Segoe-UI-Bold" }}
           leftIcon={{ name: "apps" }}
-          onPress={() => {
-            props.dispatchEvent({
+          onPress={() => { 
+            this.props.dispatchEvent({
               type: "NAVTO",
               routeName: "Dashboard",
               payload: { naviget: this.props.navigation, isModal: false }
