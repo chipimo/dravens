@@ -13,6 +13,7 @@ import SignupScreen from "../screens/auth/SginUp";
 import TabBarIcon from "../components/TabBarIcon";
 import Monitor from "../screens/Monitor";
 import BookingScreen from "../screens/Booking";
+import BookkingServices from "../screens/Booking";
 import More from "../screens/More";
 import CustomerCare from "../screens/CustomerCare";
 import AuthMonitor from "../screens/auth/AuthMonitor";
@@ -23,6 +24,16 @@ import EventViewer from "../screens/EventViewer";
 import ServicesView from "../screens/ServicesView";
 
 /////Tab navigation
+
+const BookingStackNav = createStackNavigator({
+  BookingMain: BookkingServices,
+  BookingModal: BookingScreen
+});
+
+BookingStackNav.navigationOptions = {
+  mode: "modal",
+  header: null
+};
 
 const EventStack = createStackNavigator({
   Main: Events,
@@ -70,7 +81,7 @@ HomeStack.navigationOptions = {
 // };
 
 const BookingStack = createStackNavigator({
-  Booking: BookingScreen
+  Booking: BookingStackNav
 });
 
 BookingStack.navigationOptions = {
