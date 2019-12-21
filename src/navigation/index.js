@@ -14,7 +14,8 @@ import TabBarIcon from "../components/TabBarIcon";
 import Monitor from "../screens/Monitor";
 import BookingScreen from "../screens/Booking";
 import BookkingServices from "../screens/Booking";
-import More from "../screens/More";
+import MenuScreen from "../screens/menu";
+import LinksScreen from "../screens/LinksScreen";
 import CustomerCare from "../screens/CustomerCare";
 import AuthMonitor from "../screens/auth/AuthMonitor";
 import ToolBar from "../components/ToolBar";
@@ -24,6 +25,15 @@ import EventViewer from "../screens/EventViewer";
 import ServicesView from "../screens/ServicesView";
 
 /////Tab navigation
+
+const MoreStackNav = createStackNavigator({
+  More: MenuScreen,
+  LinksScreen:LinksScreen
+});
+
+MoreStackNav.navigationOptions = {
+  header: null
+};
 
 const BookingStackNav = createStackNavigator({
   BookingMain: BookkingServices,
@@ -86,6 +96,7 @@ const BookingStack = createStackNavigator({
 
 BookingStack.navigationOptions = {
   tabBarLabel: "Booking",
+  header: null,
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -98,7 +109,7 @@ BookingStack.navigationOptions = {
 };
 
 const MoreStack = createStackNavigator({
-  More: More
+  More: MoreStackNav
 });
 
 MoreStack.navigationOptions = {
