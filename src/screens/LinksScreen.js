@@ -19,7 +19,8 @@ import { connect } from "react-redux";
 
 class LinksScreen extends React.Component {
   static navigationOptions = {
-    header: null
+    header: null,
+    tabBarVisible: false 
   };
 
   state = {
@@ -80,30 +81,20 @@ class LinksScreen extends React.Component {
       <Toolbar
         leftElement={
           <IconToggle
+          onPress={() => {
+            this.props.navigation.goBack();
+            this.props.dispatchEvent({
+              type: "NAVREST",
+              routeName: ""
+            });
+          }}
             children={
-              Platform.OS === "ios" ? (
-                <Ionicons
-                  onPress={() => {
-                    this.props.navigation.naviget.goBack();
-                    this.props.dispatchEvent({
-                      type: "NAVREST",
-                      routeName: ""
-                    });
-                  }}
-                  size={20}
-                  name="ios-arrow-back"
-                  color="#D5D4D5"
-                />
-              ) : (
-                <MaterialIcons
-                  onPress={() => {
-                    this.props.navigation.naviget.goBack();
-                  }}
-                  size={20}
-                  name="keyboard-arrow-left"
-                  color="#D5D4D5"
-                />
-              )
+              <Icon
+                size={20}
+                type='ionicon'
+                name="ios-arrow-back"
+                color="#D5D4D5"
+              />
             }
           />
         }

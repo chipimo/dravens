@@ -27,8 +27,7 @@ import ServicesView from "../screens/ServicesView";
 /////Tab navigation
 
 const MoreStackNav = createStackNavigator({
-  More: MenuScreen,
-  LinksScreen:LinksScreen
+  More: MenuScreen
 });
 
 MoreStackNav.navigationOptions = {
@@ -162,7 +161,8 @@ const MainStack = createMaterialBottomTabNavigator(
 ////SCREEN STACK NAVIGATION/////
 const Stacks = createStackNavigator(
   {
-    Tabs: MainStack
+    Tabs: MainStack,
+    LinksScreen:LinksScreen
   },
   {
     /* Other configuration remains unchanged */

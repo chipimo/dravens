@@ -15,7 +15,7 @@ import LottieView from "lottie-react-native";
 import { ListItem, Avatar, Divider } from "react-native-elements";
 import { connect } from "react-redux";
 
-export default class MenuScreen extends React.Component {
+ class MenuScreen extends React.Component {
   static navigationOptions = {
     header: null
   };
@@ -60,7 +60,7 @@ export default class MenuScreen extends React.Component {
 
         <ListItem
           title="Dashboard"
-          titleStyle={{ fontFamily: "Segoe--+UI-Bold" }}
+          titleStyle={{ fontFamily: "Segoe-UI-Bold" }}
           leftIcon={{ name: "apps" }}
           onPress={() => {
             this.props.dispatchEvent({
