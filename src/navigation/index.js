@@ -3,6 +3,7 @@ import { Platform } from "react-native";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator, BottomTabBar } from "react-navigation-tabs";
+import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 import createAnimatedSwitchNavigator from "react-navigation-animated-switch";
 import { Transition } from "react-native-reanimated";
 import HomeScreen from "../screens/HomeScreen";
@@ -47,7 +48,7 @@ HomeStack.navigationOptions = {
     <TabBarIcon focused={focused} color={tintColor} name={"ios-home"} />
   ),
   tabBarOptions: {
-    activeTintColor: "#503088"
+    activeTintColor: "#5E1E7C"
   }
 };
 
@@ -64,7 +65,7 @@ HomeStack.navigationOptions = {
 //     />
 //   ),
 //   tabBarOptions: {
-//     activeTintColor: "#503088"
+//     activeTintColor: "#5E1E7C"
 //   }
 // };
 
@@ -81,7 +82,7 @@ BookingStack.navigationOptions = {
     />
   ),
   tabBarOptions: {
-    activeTintColor: "#503088"
+    activeTintColor: "#5E1E7C"
   }
 };
 
@@ -98,7 +99,7 @@ MoreStack.navigationOptions = {
     />
   ),
   tabBarOptions: {
-    activeTintColor: "#503088"
+    activeTintColor: "#5E1E7C"
   }
 };
 
@@ -115,14 +116,14 @@ CustomerStack.navigationOptions = {
     />
   ),
   tabBarOptions: {
-    activeTintColor: "#503088"
+    activeTintColor: "#5E1E7C"
   }
 };
 
 const TabBarComponent = props => <BottomTabBar {...props} />;
 
 ////SCREEN TAB NAVIGATION//////
-const MainStack = createBottomTabNavigator(
+const MainStack = createMaterialBottomTabNavigator(
   {
     HomeStack,
     BookingStack,
@@ -130,9 +131,9 @@ const MainStack = createBottomTabNavigator(
     MoreStack
   },
   {
-    tabBarComponent: props => (
-      <TabBarComponent {...props} style={{ borderTopColor: "#CFCFCF" }} />
-    )
+    activeColor: "#5E1E7C",
+    inactiveColor: "#3e2465",
+    barStyle: { backgroundColor: "#FDFDFD" }
   }
 );
 
