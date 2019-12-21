@@ -4,7 +4,7 @@ import { View, Text } from 'react-native'
 const BookingScreen = () => {
     return (
         <View>
-            <Text></Text>
+            <Text>BookingScreen</Text>
         </View>
     )
 }

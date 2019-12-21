@@ -51,28 +51,28 @@ HomeStack.navigationOptions = {
   }
 };
 
-const MonitorStack = createStackNavigator({
-  Monitor: Monitor
-});
+// const MonitorStack = createStackNavigator({
+//   Monitor: Monitor
+// });
 
-MonitorStack.navigationOptions = {
-  tabBarLabel: "Monitor",
-  tabBarIcon: ({ focused, tintColor }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === "ios" ? "ios-stats" : "md-stats"}
-    />
-  ),
-  tabBarOptions: {
-    activeTintColor: "#503088"
-  }
-};
+// MonitorStack.navigationOptions = {
+//   tabBarLabel: "Monitor",
+//   tabBarIcon: ({ focused, tintColor }) => (
+//     <TabBarIcon
+//       focused={focused}
+//       name={Platform.OS === "ios" ? "ios-stats" : "md-stats"}
+//     />
+//   ),
+//   tabBarOptions: {
+//     activeTintColor: "#503088"
+//   }
+// };
 
-const Booking = createStackNavigator({
+const BookingStack = createStackNavigator({
   Booking: BookingScreen
 });
 
-Booking.navigationOptions = {
+BookingStack.navigationOptions = {
   tabBarLabel: "Booking",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -94,7 +94,7 @@ MoreStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === "ios" ? "ios-more" : "md-more"}
+      name={Platform.OS === "ios" ? "ios-menu" : "md-menu"}
     />
   ),
   tabBarOptions: {
@@ -102,11 +102,11 @@ MoreStack.navigationOptions = {
   }
 };
 
-const Customer = createStackNavigator({
-  Booking: CustomerCare
+const CustomerStack = createStackNavigator({
+  Customer: CustomerCare
 });
 
-Customer.navigationOptions = {
+CustomerStack.navigationOptions = {
   tabBarLabel: "Talk to us",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -125,9 +125,8 @@ const TabBarComponent = props => <BottomTabBar {...props} />;
 const MainStack = createBottomTabNavigator(
   {
     HomeStack,
-    MonitorStack,
-    Booking,
-    Customer,
+    BookingStack,
+    CustomerStack,
     MoreStack
   },
   {

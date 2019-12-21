@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 import { CardEcomFour } from "react-native-card-ui";
-import { IconToggle } from "react-native-material-ui";
+import { IconToggle, Toolbar } from "react-native-material-ui";
 import { useSelector } from "react-redux";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { NavigationActions } from "react-navigation";
@@ -137,7 +137,11 @@ const Events = props => {
               Platform.OS === "ios" ? (
                 <Ionicons size={20} name="ios-arrow-back" color="#D5D4D5" />
               ) : (
-                <MaterialIcons size={20} name="keyboard-arrow-left" color="#D5D4D5" />
+                <MaterialIcons
+                  size={20}
+                  name="keyboard-arrow-left"
+                  color="#D5D4D5"
+                />
               )
             }
           />

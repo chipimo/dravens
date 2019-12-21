@@ -43,3 +43,5 @@ class CustomerCare extends React.Component {
     );
   }
 }
+
+export default CustomerCare;
