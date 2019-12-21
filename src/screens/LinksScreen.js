@@ -15,6 +15,7 @@ import { WebView } from "react-native-webview";
 import { Icon } from "react-native-elements";
 import LottieView from "lottie-react-native";
 import { IconToggle, Toolbar } from "react-native-material-ui";
+import {connect} from 'react-redux'
 
 class LinksScreen extends React.Component {
   static navigationOptions = {
