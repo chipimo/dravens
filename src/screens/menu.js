@@ -62,11 +62,10 @@ export default class MenuScreen extends React.Component {
           title="Dashboard"
           titleStyle={{ fontFamily: "Segoe--+UI-Bold" }}
           leftIcon={{ name: "apps" }}
-          onPress={() => { 
+          onPress={() => {
             this.props.dispatchEvent({
               type: "NAVTO",
-              routeName: "Dashboard",
-              payload: { naviget: this.props.navigation, isModal: false }
+              routeName: ""
             });
             this.props.navigation.navigate("LinksScreen", {
               title: "Dashboard",
@@ -250,6 +249,20 @@ export default class MenuScreen extends React.Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    navData: state.navData
+  };
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatchEvent: data => dispatch(data)
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MenuScreen);
 
 const styles = StyleSheet.create({
   container: {

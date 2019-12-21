@@ -83,14 +83,22 @@ class LinksScreen extends React.Component {
             children={
               Platform.OS === "ios" ? (
                 <Ionicons
-                  onPress={() => this.props.navigation.naviget.goBack()}
+                  onPress={() => {
+                    this.props.navigation.naviget.goBack();
+                    this.props.dispatchEvent({
+                      type: "NAVREST",
+                      routeName: ""
+                    });
+                  }}
                   size={20}
                   name="ios-arrow-back"
                   color="#D5D4D5"
                 />
               ) : (
                 <MaterialIcons
-                  onPress={() => this.props.navigation.naviget.goBack()}
+                  onPress={() => {
+                    this.props.navigation.naviget.goBack();
+                  }}
                   size={20}
                   name="keyboard-arrow-left"
                   color="#D5D4D5"
