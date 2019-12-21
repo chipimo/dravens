@@ -60,7 +60,7 @@ export default class MenuScreen extends React.Component {
 
         <ListItem
           title="Dashboard"
-          titleStyle={{ fontFamily: "Segoe-UI-Bold" }}
+          titleStyle={{ fontFamily: "Segoe--+UI-Bold" }}
           leftIcon={{ name: "apps" }}
           onPress={() => { 
             this.props.dispatchEvent({
