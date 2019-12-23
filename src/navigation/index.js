@@ -34,32 +34,9 @@ MoreStackNav.navigationOptions = {
   header: null
 };
 
-const BookingStackNav = createStackNavigator({
-  BookingMain: BookkingServices,
-  BookingModal: BookingScreen
-});
-
-BookingStackNav.navigationOptions = {
-  mode: "modal",
-  header: null
-};
-
-const EventStack = createStackNavigator({
-  Main: Events,
-  EventModal: EventViewer
-});
-
-EventStack.navigationOptions = {
-  mode: "modal",
-  header: null
-};
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
-  Events: EventStack,
-  EventViewer: EventViewer,
-  ServicesView: ServicesView,
-  FeedViewer: FeedViewer
 });
 
 HomeStack.navigationOptions = {
@@ -90,7 +67,7 @@ HomeStack.navigationOptions = {
 // };
 
 const BookingStack = createStackNavigator({
-  Booking: BookingStackNav
+  Booking: BookingScreen
 });
 
 BookingStack.navigationOptions = {

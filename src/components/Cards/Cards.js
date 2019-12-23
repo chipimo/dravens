@@ -342,10 +342,10 @@ export class CardFour extends Component<Props> {
           >
             <Text
               style={{
-                marginTop: scale(15),
+                marginTop: scale(1),
                 color: "#fff",
                 fontSize: scale(30),
-                marginBottom: scale(20)
+                marginBottom: scale(10)
               }}
             >
               {this.props.off}
@@ -353,12 +353,25 @@ export class CardFour extends Component<Props> {
             <Text
               style={{
                 color: "#fff",
-                fontSize: scale(11),
+                fontSize: scale(15),
+                width: scale(200),
+                marginBottom: scale(8),
+                textAlign: "justify",
+                fontWeight: "900"
+              }}
+            >
+              {this.props.offTextSub.substring(0, 100) + "."}
+            </Text>
+            <Text
+              style={{
+                color: "#fff",
+                fontSize: scale(13),
                 width: scale(200),
                 textAlign: "justify"
               }}
             >
-              {this.props.offText.substring(0, 100) + "."}
+              {this.props.offText}
+              {/* {this.props.offText.substring(0, 100) + "."} */}
             </Text>
           </View>
           {/* <TouchableOpacity

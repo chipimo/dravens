@@ -36,7 +36,7 @@ const ToolBar = props => {
             </View>
           }
           style={{
-            container: { backgroundColor: "#6B4180" }
+            container: { backgroundColor: "#520078" }
           }}
         />
       ) : null}

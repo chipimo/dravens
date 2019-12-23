@@ -33,14 +33,14 @@ class LinksScreen extends React.Component {
     let link = this.props.navigation.state.params.link;
     let jsCode = `
     document.querySelector('.page-heading').style.display = 'none'; document.querySelector('.et-footers-wrapper').style.display = 'none';  
-    document.querySelector('#body-area').style.display = 'none ';  
+    document.querySelector('.header-wrapper').style.display = 'none ';  
   `;
     return (
       <WebView
         source={{ uri: link }}
         style={{ flex: 9 }}
         injectedJavaScript={jsCode}
-        onLoadStart={() => this.setState({ loading: true })}
+        onLoadStart={() => this.setState({ loading: true })} 
         onLoadEnd={() => this.setState({ loading: false })}
         scalesPageToFit={true}
       />

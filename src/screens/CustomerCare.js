@@ -1,48 +1,164 @@
+import * as WebBrowser from "expo-web-browser";
 import React from "react";
-import { GiftedChat } from "react-native-gifted-chat";
-import { View, Text } from "react-native";
+import {
+  Image,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  StatusBar,
+  ActivityIndicator
+} from "react-native";
+import { WebView } from "react-native-webview";
+import { Icon } from "react-native-elements";
+import LottieView from "lottie-react-native";
+import { IconToggle, Toolbar } from "react-native-material-ui";
+import { connect } from "react-redux";
 
 class CustomerCare extends React.Component {
-  state = {
-    messages: []
+  static navigationOptions = {
+    header: null,
+    tabBarVisible: false 
   };
 
-  componentDidMount() {
-    this.setState({
-      messages: [
-        {
-          _id: 1,
-          text: "Hello developer",
-          createdAt: new Date(),
-          user: {
-            _id: 2,
-            name: "React Native",
-            avatar: "https://placeimg.com/140/140/any"
-          }
-        }
-      ]
-    });
-  }
+  state = {
+    loading: true
+  };
 
-  onSend(messages = []) {
-    this.setState(previousState => ({
-      messages: GiftedChat.append(previousState.messages, messages)
-    }));
-  }
+  componentWillMount() {}
+
+  _webview = () => {
+    let link = "https://tawk.to/chat/5d55359a77aa790be32f04f5/default?$_tawk_sk=5dfde91c8e83d72ac8786b83&$_tawk_tk=066321a3c64d4d2d74734337f05292a8&v=680";
+    let jsCode = `
+    document.querySelector('.page-heading').style.display = 'none'; document.querySelector('.et-footers-wrapper').style.display = 'none';  
+    document.querySelector('.header-wrapper').style.display = 'none ';  
+  `;
+    return (
+      <WebView
+        source={{ uri: link }}
+        style={{ flex: 9 }}
+        injectedJavaScript={jsCode}
+        onLoadStart={() => this.setState({ loading: true })} 
+        onLoadEnd={() => this.setState({ loading: false })}
+        scalesPageToFit={true}
+      />
+    );
+  };
+
+  _loadingScreen = () => {
+    return (
+      <View style={styles.loader}>
+        <LottieView
+          source={require("../assets/lottie/pulse.json")}
+          autoPlay
+          loop
+        />
+      </View>
+    );
+  };
+  _header = () => {
+    let title = this.props.navigation.state.params.title;
+    return (
+      //  <View style={styles.header}>
+      //   <Icon
+      //      name='navigate-before'
+      //      onPress={() => this.props.navigation.goBack()}
+      //      containerStyle={{padding: 10,margin:9}}
+      //      size={30}
+      //   />
+      //   <Text style={styles.NotificationText}>{title}</Text>
+      //   <Icon
+      //      name='more-horiz'
+      //      onPress={() => this.props.navigation.goBack()}
+      //      containerStyle={{padding: 10,margin:10}}
+      //      size={30}
+      //      color='#fff'
+      //   />
+      // </View>
+
+      <Toolbar
+        leftElement={
+          <IconToggle
+          onPress={() => {
+            this.props.navigation.goBack();
+            this.props.dispatchEvent({
+              type: "NAVREST",
+              routeName: ""
+            });
+          }}
+            children={
+              <Icon
+                size={20}
+                type='ionicon'
+                name="ios-arrow-back"
+                color="#D5D4D5"
+              />
+            }
+          />
+        }
+        centerElement={
+          <View style={{ flexDirection: "row" }}>
+            <Text
+              style={{
+                fontFamily: "Segoe-UI-Bold",
+                color: "#D5D4D5",
+                fontSize: 17
+              }}
+            >
+              {title}
+            </Text>
+          </View>
+        }
+        style={{
+          container: { backgroundColor: "#6B4180" }
+        }}
+      />
+    );
+  };
 
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <GiftedChat
-          messages={this.state.messages}
-          onSend={messages => this.onSend(messages)}
-          user={{
-            _id: 1
-          }}
-        />
+        
+        <View style={{ flex: 10 }}>{this._webview()}</View>
+
+        {this.state.loading ? this._loadingScreen() : null}
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff"
+  },
+  loader: {
+    flex: 1,
+    position: "absolute",
+    top: 50,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: "#fff"
+  },
+  NotificationText: {
+    color: "#000",
+    fontFamily: "Segoe-UI-Bold",
+    fontSize: 20,
+    paddingLeft: 0,
+    paddingTop: 21
+  },
+  header: {
+    flex: 1,
+    backgroundColor: "#fff",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    borderBottomColor: "rgba(0,0,0,.1)",
+    borderBottomWidth: 1
+  }
+});
 
 export default CustomerCare;

@@ -1,164 +1,105 @@
+import * as WebBrowser from "expo-web-browser";
 import React from "react";
 import {
-  View,
+  Image,
+  Platform,
+  ScrollView,
+  StyleSheet,
   Text,
   TouchableOpacity,
-  Dimensions,
-  Platform,
-  TextInput
+  View,
+  StatusBar,
+  ActivityIndicator
 } from "react-native";
-import {
-  Avatar,
-  ListItem,
-  Checkbox,
-  IconToggle
-} from "react-native-material-ui";
-import Modal, { ModalContent } from "react-native-modals";
-import { scale, verticalScale, moderateScale } from "react-native-size-matters";
-import { Ionicons, AntDesign } from "@expo/vector-icons";
+import { WebView } from "react-native-webview";
+import { Icon } from "react-native-elements";
+import LottieView from "lottie-react-native";
+import { IconToggle, Toolbar } from "react-native-material-ui";
+import { connect } from "react-redux";
 
-const DeviceWidth = Dimensions.get("window").width;
-const DeviceHeight = Dimensions.get("window").height;
+class BookingScreen extends React.Component {
+  static navigationOptions = {
+    header: null,
+  };
 
-const BookingScreen = () => {
-  const [visible, setVisible] = React.useState(false);
-  const [TextMsg, setTextMsg] = React.useState("");
+  state = {
+    loading: true
+  };
 
-  return (
-    <View>
-      <View style={{ paddingTop: 8 }}>
-        <TouchableOpacity
-          onPress={() => setVisible(true)}
-          style={{
-            flexDirection: "row",
-            borderWidth: 1,
-            borderStyle: "solid",
-            borderColor: "transparent",
-            borderBottomColor: "#D3D3D3",
-            padding: 15
-          }}
-        >
-          <View>
-            <Avatar
-              icon="person"
-              iconColor="white"
-              style={{ container: { backgroundColor: "#D3D3D3" } }}
-            />
-          </View>
-          <View style={{ marginLeft: 10 }}>
-            <Text style={{ fontFamily: "Segoe-UI", fontSize: 16 }}>For</Text>
-            <Text style={{ fontFamily: "Segoe-UI", fontSize: 16 }}>
-              Melvin Chipimo
-            </Text>
-          </View>
-          <View></View>
-        </TouchableOpacity>
-        <View
-          style={{
-            paddingLeft: 10,
-            borderWidth: 1,
-            borderStyle: "solid",
-            borderColor: "transparent",
-            borderBottomColor: "#D3D3D3"
-          }}
-        >
-          <TextInput
-            multiline={true}
-            numberOfLines={4}
-            onChangeText={text => setTextMsg(text)}
-            value={TextMsg}
-            placeholder="Add reson for this appointment"
-            placeholderTextColor="#4B4B4B"
-          />
-        </View>
-      </View>
-      <View>
-        <ListItem
-          divider
-          leftElement={
-            <AntDesign name={"solution1"} size={20} color="#503088" />
-          }
-          centerElement={{
-            primaryText: "Primary text"
-          }}
-          onPress={() => {}}
+  componentWillMount() {}
+
+  _webview = () => {
+    let link = "https://dravens.co.uk/book/";  
+    let jsCode = `
+    document.querySelector('.page-heading').style.display = 'none'; document.querySelector('.et-footers-wrapper').style.display = 'none';  
+    document.querySelector('.header-wrapper').style.display = 'none ';  
+  `;
+    return (
+      <WebView
+        source={{ uri: link }} 
+        style={{ flex: 9 }}
+        injectedJavaScript={jsCode}
+        onLoadStart={() => this.setState({ loading: true })} 
+        onLoadEnd={() => this.setState({ loading: false })}
+        scalesPageToFit={true}
+      />
+    );
+  };
+
+  _loadingScreen = () => { 
+    return (
+      <View style={styles.loader}>
+        <LottieView
+          source={require("../assets/lottie/pulse.json")}
+          autoPlay
+          loop
         />
       </View>
-      <Modal
-        visible={visible}
-        onTouchOutside={() => {
-          setVisible(false);
-        }}
-      >
-        <ModalContent>
-          <View style={{ width: DeviceWidth - 80 }}>
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "flex-start",
-                borderWidth: 1,
-                borderStyle: "solid",
-                borderColor: "transparent",
-                borderBottomColor: "#D3D3D3",
-                paddingBottom: 5
-              }}
-            >
-              <View>
-                <Avatar
-                  icon="person"
-                  iconColor="white"
-                  style={{ container: { backgroundColor: "#D3D3D3" } }}
-                />
-              </View>
-              <View
-                style={{ marginTop: 10, marginLeft: 15, width: scale(150) }}
-              >
-                <Text
-                  numberOfLines={1}
-                  style={{
-                    fontFamily: "Segoe-UI",
-                    fontSize: 16,
-                    color: "#503088"
-                  }}
-                >
-                  Melvin Chipimo
-                </Text>
-              </View>
-              <View style={{ marginTop: 10, marginLeft: 15 }}>
-                <Ionicons
-                  name={
-                    Platform.OS === "ios"
-                      ? "ios-checkmark-circle-outline"
-                      : "md-checkmark-circle-outline"
-                  }
-                  size={20}
-                  color="#503088"
-                />
-              </View>
-            </View>
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "flex-start",
-                marginTop: 8
-              }}
-            >
-              <View style={{ backgroundColor: "#503088", borderRadius: 100 }}>
-                <IconToggle name="add" color="white" />
-              </View>
-              <View style={{ marginTop: 10, marginLeft: 15 }}>
-                <Text>Add family member</Text>
-              </View>
-            </View>
-          </View>
-        </ModalContent>
-      </Modal>
-    </View>
-  );
-};
+    );
+  };
+ 
 
-BookingScreen.navigationOptions = {
-  header: null
-};
+  render() {
+    return (
+      <View style={{ flex: 1 }}>
+        
+        <View style={{ flex: 10 }}>{this._webview()}</View>
+
+        {this.state.loading ? this._loadingScreen() : null}
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff"
+  },
+  loader: {
+    flex: 1,
+    position: "absolute",
+    top: 50,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: "#fff"
+  },
+  NotificationText: {
+    color: "#000",
+    fontFamily: "Segoe-UI-Bold",
+    fontSize: 20,
+    paddingLeft: 0,
+    paddingTop: 21
+  },
+  header: {
+    flex: 1,
+    backgroundColor: "#fff",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    borderBottomColor: "rgba(0,0,0,.1)",
+    borderBottomWidth: 1
+  }
+});
 
 export default BookingScreen;

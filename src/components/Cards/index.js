@@ -115,12 +115,10 @@ CardThree.propTypes = {
   iconColor: propTypes.string
 };
 CardFour.propTypes = {
-  onClicked: propTypes.func.isRequired,
   image: propTypes.oneOfType([propTypes.number, propTypes.object]).isRequired,
   date: propTypes.string.isRequired,
   off: propTypes.string.isRequired,
   offText: propTypes.string.isRequired,
-  buttonText: propTypes.string.isRequired
 };
 CardFive.propTypes = {
   title: propTypes.string.isRequired,
