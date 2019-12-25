@@ -15,7 +15,8 @@ import propTypes from "prop-types";
 import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 
 import Icon from "react-native-vector-icons/FontAwesome";
-import { Button } from "react-native-material-ui";
+import { Button } from 'react-native-elements';
+
 
 let screenWidth = Dimensions.get("window").width;
 let screenHeight = Dimensions.get("window").height;
@@ -648,7 +649,7 @@ export class CardSix extends Component<Props> {
               }}
             >
               <Text
-                style={{ color: "#000", margin: scale(3), fontSize: scale(17) }}
+                style={{ color: "#000", margin: scale(3), fontSize: scale(20), fontFamily: "Segoe-UI-Bold"}}
               >
                 {this.props.title}
               </Text>
@@ -657,20 +658,21 @@ export class CardSix extends Component<Props> {
                   color: "#888",
                   textAlign: "justify",
                   margin: scale(3),
-                  fontSize: scale(12)
+                  fontSize: scale(13),
+                  
                 }}
               >
                 {this.props.subTitle}
               </Text>
               <View
                 style={{
-                  flexDirection: "row",
+                  flexDirection: "column",
                   justifyContent: "flex-start",
                   paddingLeft: 6
                 }}
               >
-                <View style={{ flexDirection: "row" }}>
-                  <TouchableOpacity
+                <View style={{ flexDirection: "column" }}> 
+                  {/* <TouchableOpacity
                     onPress={() => this.props.onClicked1()}
                     style={[
                       {
@@ -692,7 +694,7 @@ export class CardSix extends Component<Props> {
                       color={this.props.iconColor1}
                       size={scale(20)}
                     />
-                  </TouchableOpacity>
+                  </TouchableOpacity> 
                   <TouchableOpacity
                     onPress={() => this.props.onClicked2()}
                     style={[
@@ -715,9 +717,25 @@ export class CardSix extends Component<Props> {
                       color={this.props.iconColor2}
                       size={scale(20)}
                     />
-                  </TouchableOpacity>
+                  </TouchableOpacity>*/}
+                  <Button
+                      title={this.props.icon2}
+                      onPress={() => this.props.onClicked2()}
+                      buttonStyle={{
+                        backgroundColor: '#503088',
+                        borderRadius:10,
+                        padding:10,
+                      }}
+                      textStyle={{
+                        fontWeight:'bold',
+                      }}
+                      containerStyle={{
+                        margin:scale(5),
+                        marginTop:scale(10)
+                      }}
+                  />
                 </View>
-                <View
+                {/*<View
                   style={{ flexDirection: "row", marginTop: 10, marginLeft: 5 }}
                 >
                   <View style={{ marginTop: 2 }}>
@@ -730,9 +748,9 @@ export class CardSix extends Component<Props> {
                       marginLeft: 9
                     }}
                   >
-                    {this.props.stars} stras
+                    {this.props.stars} Views
                   </Text>
-                </View>
+                </View>*/}
               </View>
             </View>
           </View>

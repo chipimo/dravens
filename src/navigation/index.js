@@ -2,27 +2,19 @@ import React from "react";
 import { Platform } from "react-native";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
-import { createBottomTabNavigator, BottomTabBar } from "react-navigation-tabs";
+import {  BottomTabBar } from "react-navigation-tabs";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 import createAnimatedSwitchNavigator from "react-navigation-animated-switch";
 import { Transition } from "react-native-reanimated";
 import HomeScreen from "../screens/HomeScreen";
-// import WalkthroughScreen from "../screens/WalkthroughScreen";
-import LoginScreen from "../screens/auth/Login";
-import SignupScreen from "../screens/auth/SginUp";
+
 import TabBarIcon from "../components/TabBarIcon";
 import Monitor from "../screens/Monitor";
 import BookingScreen from "../screens/Booking";
-import BookkingServices from "../screens/Booking";
 import MenuScreen from "../screens/menu";
 import LinksScreen from "../screens/LinksScreen";
 import CustomerCare from "../screens/CustomerCare";
-import AuthMonitor from "../screens/auth/AuthMonitor";
 import ToolBar from "../components/ToolBar";
-import Events from "../screens/Events";
-import FeedViewer from "../screens/FeedViewer";
-import EventViewer from "../screens/EventViewer";
-import ServicesView from "../screens/ServicesView";
 
 /////Tab navigation
 
@@ -82,7 +74,7 @@ BookingStack.navigationOptions = {
   tabBarOptions: {
     activeTintColor: "#5E1E7C"
   }
-};
+}; 
 
 const MoreStack = createStackNavigator({
   More: MoreStackNav
@@ -152,7 +144,6 @@ const Stacks = createStackNavigator(
 ////SCREEN SWICHER NAVIGATION//////
 const DravensApp = createAnimatedSwitchNavigator(
   {
-    Auth: AuthMonitor,
     Main: Stacks
   },
   {

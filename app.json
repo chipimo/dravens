@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Dravens",
+    "name": "Dravens HealthCare",
     "slug": "Dravens",
     "privacy": "public",
     "sdkVersion": "35.0.0",
@@ -17,6 +17,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "android": {
+      "package": "com.dravens.dravenshealthcare"
+    },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -24,6 +27,7 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.dravens.dravenshealthcare",
       "supportsTablet": true
     },
     "description": ""

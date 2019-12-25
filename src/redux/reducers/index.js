@@ -7,6 +7,7 @@ import UserInfo from "./userInfo";
 import CardItem from "./CardItem";
 import EventCard from "./EventCard";
 import NavData from "./NavData";
+import Welcome from "./welcome";
 
 const config = {
   key: "root",
@@ -20,7 +21,8 @@ const createReducer = () => {
     user: UserInfo,
     CardItem: CardItem,
     EventCard: EventCard,
-    NavData: NavData
+    NavData: NavData,
+    Welcome: Welcome
   });
 };
 

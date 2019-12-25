@@ -36,8 +36,6 @@ export default function App() {
 
   const fetchFonts = () => {
     return Font.loadAsync({
-      fontawesome: require("./src/assets/fonts/fontawesome.ttf"),
-      icomoon: require("./src/assets/fonts/icomoon.ttf"),
       "Righteous-Regular": require("./src/assets/fonts/Righteous-Regular.ttf"),
       "Roboto-Bold": require("./src/assets/fonts/Roboto-Bold.ttf"),
       "Roboto-Medium": require("./src/assets/fonts/Roboto-Medium.ttf"),
