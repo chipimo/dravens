@@ -1016,7 +1016,7 @@ const HomeScreen = props => {
               </View>
             )}
           </View>
-        )}
+        )} 
       </View>
     );
   };
