@@ -146,7 +146,7 @@ const HomeScreen = props => {
     if (value) props.navigation.navigate("EventViewer");
 
     return () => {};
-  }, [value]);
+  }, [props]);
 
   getHour = () => {
     const date = new Date();
@@ -227,8 +227,10 @@ const HomeScreen = props => {
 
   ///WELCOME
   const Welcome = () => {
-    console.log(props.Welcome);
-    if (props.Welcome) {
+    if (props.Welcome.isLoaded) {
+      props.dispatchEvent({
+        type: "WELCOME"
+      });
       return true;
     } else {
       return false;
@@ -323,7 +325,98 @@ const HomeScreen = props => {
     return (
       <View style={{ flex: 1 }}>
         <CardSix
-          title={"VACANCIES"}
+          title={"Dravens HealthCare International (Zimbabwe)"}
+          subTitle={
+            "The Dravens Healthcare new model of healthcare service is for the Zimbabwean Diaspora who would like to make care arrangements for their loved ones living in Zimbabwe. "
+          }
+          stars={3253}
+          profile={{
+            uri:
+              "https://dravens.co.uk/wp-content/uploads/2019/12/14-50-secrets-nurses-smiling.jpg"
+          }}
+          image={{
+            uri:
+              "https://dravens.co.uk/wp-content/uploads/2019/12/14-50-secrets-nurses-smiling.jpg"
+          }}
+          icon1={"star"}
+          iconColor1={"#fff"}
+          iconBackground1={"red"}
+          onClicked1={() => {
+            alert("Hello!");
+          }}
+          icon2={"Read More"}
+          iconColor2={"#fff"}
+          iconBackground2={"purple"}
+          onClicked2={() => {
+            props.navigation.navigate("LinksScreen", {
+              title: "Services We Offer",
+              link: "https://dravens.co.uk/services-we-offer/"
+            });
+          }}
+        />
+
+        <CardSix
+          title={"APP FEATURES"}
+          subTitle={"Explore our amazing app Features"}
+          stars={3253}
+          profile={{
+            uri:
+              "https://dravens.co.uk/wp-content/uploads/2019/12/background1.png"
+          }}
+          image={{
+            uri:
+              "https://dravens.co.uk/wp-content/uploads/2019/12/background1.png"
+          }}
+          icon1={"star"}
+          iconColor1={"#fff"}
+          iconBackground1={"red"}
+          onClicked1={() => {
+            alert("Hello!");
+          }}
+          icon2={"Start Now"}
+          iconColor2={"#fff"}
+          iconBackground2={"purple"}
+          onClicked2={() => {
+            props.navigation.navigate("LinksScreen", {
+              title: "APP FEATURES",
+              link: "https://dravens.co.uk/app-features/"
+            });
+          }}
+        />
+
+        <CardSix
+          title={"STORE"}
+          subTitle={
+            "Our Store contains all the products you need for your health Care"
+          }
+          stars={3253}
+          profile={{
+            uri:
+              "https://dravens.co.uk/wp-content/uploads/2019/12/Onlineshop.png"
+          }}
+          image={{
+            uri:
+              "https://dravens.co.uk/wp-content/uploads/2019/12/Onlineshop.png"
+          }}
+          icon1={"star"}
+          iconColor1={"#fff"}
+          iconBackground1={"red"}
+          onClicked1={() => {
+            alert("Hello!");
+          }}
+          icon2={"BUY NOW"}
+          iconColor2={"#fff"}
+          iconBackground2={"purple"}
+          onClicked2={() => {
+            props.navigation.navigate("LinksScreen", {
+              title: "STORE",
+              link: "https://dravens.co.uk/store"
+            });
+          }}
+        />
+
+        <CardSix
+          title={"VACANCY"}
           subTitle={
             "Our robust recruitment standards ensure we only employ people who have a compassionate approach and genuinely care for the well-being of our clients"
           }
@@ -340,12 +433,12 @@ const HomeScreen = props => {
           onClicked1={() => {
             alert("Hello!");
           }}
-          icon2={"Apply For a Vacance"}
+          icon2={"Apply For a Vacancy"}
           iconColor2={"#fff"}
           iconBackground2={"purple"}
           onClicked2={() => {
             props.navigation.navigate("LinksScreen", {
-              title: "VACANCIES",
+              title: "VACANCY",
               link: "https://dravens.co.uk/job-application-mobile/"
             });
           }}
@@ -383,16 +476,16 @@ const HomeScreen = props => {
         <CardSix
           title={"FRANCHISE OPPORTUNITY"}
           subTitle={
-            "Become our Franchise and offer our great services in your Country or Area"
+            "Dravens Healthcare is now offering Franchise Opportunities as Dravens HC."
           }
           stars={3253}
           profile={{
             uri:
-              "https://dravens.co.uk/wp-content/uploads/2019/08/66639018_654296765039057_8177279872276627456_n.jpg"
+              "https://dravens.co.uk/wp-content/uploads/2019/08/66076406_667789507057425_3243528614397870080_n.jpg"
           }}
           image={{
             uri:
-              "https://dravens.co.uk/wp-content/uploads/2019/08/66639018_654296765039057_8177279872276627456_n.jpg"
+              "https://dravens.co.uk/wp-content/uploads/2019/08/66076406_667789507057425_3243528614397870080_n.jpg"
           }}
           icon1={"star"}
           iconColor1={"#fff"}

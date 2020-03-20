@@ -79,6 +79,48 @@ class MenuScreen extends React.Component {
           }}
           bottomDivider
           chevron
+        /> 
+
+        <ListItem
+          title="Services We Offer"
+          titleStyle={{ fontFamily: "Segoe-UI-Bold" }}
+          leftIcon={{ name: "info", color: "#4b205f" }}
+          onPress={() => {
+            this.props.navigation.navigate("LinksScreen", {
+              title: "Services We Offer",
+              link: "https://dravens.co.uk/services-we-offer/"
+            });
+          }}
+          bottomDivider
+          chevron
+        />
+
+         <ListItem
+          title="App Features"
+          titleStyle={{ fontFamily: "Segoe-UI-Bold" }}
+          leftIcon={{ name: "info", color: "#4b205f" }}
+          onPress={() => {
+            this.props.navigation.navigate("LinksScreen", {
+              title: "App Features",
+              link: "https://dravens.co.uk/app-features/"
+            });
+          }}
+          bottomDivider
+          chevron
+        />
+
+        <ListItem
+          title="Our Store"
+          titleStyle={{ fontFamily: "Segoe-UI-Bold" }}
+          leftIcon={{ name: "store", color: "#4b205f" }}
+          onPress={() => {
+            this.props.navigation.navigate("LinksScreen", {
+              title: "Store",
+              link: "https://dravens.co.uk/store/"
+            });
+          }}
+          bottomDivider
+          chevron
         />
 
         <ListItem
@@ -101,8 +143,8 @@ class MenuScreen extends React.Component {
           leftIcon={{ name: "contacts", color: "#4b205f" }}
           onPress={() => {
             this.props.navigation.navigate("LinksScreen", {
-              title: "International Recruitment",
-              link: "https://dravens.co.uk/international-recruitment/"
+              title: "International Recruitment(Zimbabwe)",
+              link: "https://dravens.co.uk/zimapplication/"
             });
           }}
           bottomDivider
